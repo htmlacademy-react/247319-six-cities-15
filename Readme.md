@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов»
 
 * Студент: [Roman Milaev](https://up.htmlacademy.ru/react/15/user/247319).
-* Наставник: `Неизвестно`.
+* Наставник: [Иван Некипелов](https://htmlacademy.ru/profile/jedi).
 
 ---
 
