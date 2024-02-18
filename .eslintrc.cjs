@@ -6,10 +6,10 @@ module.exports = {
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:react-hooks/recommended',
-    "htmlacademy/react-typescript",
+    'htmlacademy/react-typescript',
   ],
   parser: '@typescript-eslint/parser',
-  parserOptions: { ecmaVersion: 'latest', sourceType: 'module', project: 'tsconfig.json' },
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module', project: `${__dirname}/tsconfig.json` },
   settings: { react: { version: 'detect' } },
   plugins: ['react-refresh'],
   rules: {
@@ -21,4 +21,4 @@ module.exports = {
       rules: { '@typescript-eslint/unbound-method': 'off' }
     },
   ],
-}
+};
