@@ -1,10 +1,10 @@
 import Header from '../../components/header/header';
-import OfferGallery from '../../components/offer-components/offer-gallery/offer-gallery';
-import OfferMainInfo from '../../components/offer-components/offer-main-info/offer-main-info';
-import OfferInsideOptions from '../../components/offer-components/offer-inside-options/offer-inside-options';
-import OfferHost from '../../components/offer-components/offer-host/offer-host';
-import OfferReviews from '../../components/offer-components/offer-reviews/offer-reviews';
-import OfferMap from '../../components/offer-components/offer-map/offer-map';
+import Gallery from '../../components/offer/gallery/gallery';
+import OfferMainInfo from '../../components/offer/main-info/offer-main-info';
+import InsideOptions from '../../components/offer/inside-options/inside-options';
+import Host from '../../components/offer/host/host';
+import Reviews from '../../components/offer/reviews/reviews';
+import OfferMap from '../../components/offer/map/offer-map';
 import PlaceCard from '../../components/place-card/place-card';
 import {mockData} from '../../mock-data';
 
@@ -15,14 +15,14 @@ export default function OfferPage(): JSX.Element {
       <main className="page__main page__main--offer">
         <section className="offer">
           <div className="offer__gallery-container container">
-            <OfferGallery />
+            <Gallery />
           </div>
           <div className="offer__container container">
             <div className="offer__wrapper">
               <OfferMainInfo />
-              <OfferInsideOptions />
-              <OfferHost />
-              <OfferReviews />
+              <InsideOptions />
+              <Host />
+              <Reviews />
             </div>
           </div>
           <OfferMap />

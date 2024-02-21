@@ -1,7 +1,7 @@
 // пока не понял откуда будут опции приходить
 // - поэтому не стал создавать структуру данных
 // и заполнять предложения через пропсы
-export default function OfferInsideOptions(): JSX.Element {
+export default function InsideOptions(): JSX.Element {
   return (
     <div className="offer__inside">
       <h2 className="offer__inside-title">What&apos;s inside</h2>

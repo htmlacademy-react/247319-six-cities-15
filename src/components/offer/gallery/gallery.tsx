@@ -1,4 +1,4 @@
-export default function OfferGallery(): JSX.Element {
+export default function Gallery(): JSX.Element {
   return (
     <div className="offer__gallery">
       <div className="offer__image-wrapper">

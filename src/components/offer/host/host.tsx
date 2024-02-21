@@ -1,4 +1,4 @@
-export default function OfferHost(): JSX.Element {
+export default function Host(): JSX.Element {
   return (
     <div className="offer__host">
       <h2 className="offer__host-title">Meet the host</h2>
