@@ -9,7 +9,7 @@ export default function PlaceCard({id, title, type, price, previewImage, rating,
           <span>Premium</span>
         </div> : null}
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <Link to={`/offer:${id}`}>
+        <Link to={`/offer/:${id}`}>
           <img
             className="place-card__image"
             src={previewImage}
@@ -46,7 +46,7 @@ export default function PlaceCard({id, title, type, price, previewImage, rating,
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={`/offer:${id}`}>
+          <Link to={`/offer/:${id}`}>
             {title}
           </Link>
         </h2>
