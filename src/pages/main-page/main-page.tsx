@@ -1,7 +1,7 @@
 import PlaceCard from '../../components/place-card/place-card';
 import Header from '../../components/header/header';
 import NavTab from '../../components/nav-tab/nav-tab';
-import CitiesMap from '../../components/cities-map/cities-map';
+import Map from '../../components/map/map';
 import {CITIES} from '../../const';
 import {mockData} from '../../mock-data';
 import {Helmet} from 'react-helmet-async';
@@ -76,7 +76,7 @@ export default function MainPage({placesFound}: MainPageProps): JSX.Element {
               </div>
             </section>
             <div className="cities__right-section">
-              <CitiesMap />
+              <Map attribute='cities' />
             </div>
           </div>
         </div>

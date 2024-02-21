@@ -4,7 +4,7 @@ import OfferMainInfo from '../../components/offer/main-info/offer-main-info';
 import InsideOptions from '../../components/offer/inside-options/inside-options';
 import Host from '../../components/offer/host/host';
 import Reviews from '../../components/offer/reviews/reviews';
-import OfferMap from '../../components/offer/map/offer-map';
+import Map from '../../components/map/map';
 import PlaceCard from '../../components/place-card/place-card';
 import {mockData} from '../../mock-data';
 import {Helmet} from 'react-helmet-async';
@@ -29,7 +29,7 @@ export default function OfferPage(): JSX.Element {
               <Reviews />
             </div>
           </div>
-          <OfferMap />
+          <Map attribute='offer' />
         </section>
         <div className="container">
           <section className="near-places places">

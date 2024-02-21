@@ -1,6 +1,7 @@
 import {MockDataType} from '../../mock-data';
+import {Link} from 'react-router-dom';
 
-export default function PlaceCard({title, type, price, previewImage, rating, isPremium, isFavorite}: MockDataType): JSX.Element {
+export default function PlaceCard({id, title, type, price, previewImage, rating, isPremium, isFavorite}: MockDataType): JSX.Element {
   return (
     <article className="cities__card place-card">
       {isPremium ?
@@ -8,7 +9,7 @@ export default function PlaceCard({title, type, price, previewImage, rating, isP
           <span>Premium</span>
         </div> : null}
       <div className="cities__image-wrapper place-card__image-wrapper">
-        <a href="#">
+        <Link to={`/offer:${id}`}>
           <img
             className="place-card__image"
             src={previewImage}
@@ -16,7 +17,7 @@ export default function PlaceCard({title, type, price, previewImage, rating, isP
             height={200}
             alt="Place image"
           />
-        </a>
+        </Link>
       </div>
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
@@ -45,9 +46,9 @@ export default function PlaceCard({title, type, price, previewImage, rating, isP
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#">
+          <Link to={`/offer:${id}`}>
             {title}
-          </a>
+          </Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>

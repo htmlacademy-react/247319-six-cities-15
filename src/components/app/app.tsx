@@ -5,7 +5,7 @@ import MainPage from '../../pages/main-page/main-page';
 import LoginPage from '../../pages/login-page/login-page';
 import FavoritesPage from '../../pages/favorites-page/favorites-page';
 import OfferPage from '../../pages/offer-page/offer-page';
-import NotFound from '../404/404';
+import NotFoundPage from '../NotFoundPage/NotFoundPage';
 import PrivateRoute from '../private-route/private-route';
 
 type AppProps = {
@@ -41,7 +41,7 @@ export default function App({placesFound}: AppProps): JSX.Element {
           />
           <Route
             path="*"
-            element={<NotFound />}
+            element={<NotFoundPage />}
           />
         </Routes>
       </BrowserRouter>

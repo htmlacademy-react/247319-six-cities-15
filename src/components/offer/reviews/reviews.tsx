@@ -1,3 +1,5 @@
+import ReviewsForm from '../reviews-form/reviews-form';
+
 export default function Reviews(): JSX.Element {
   return (
     <section className="offer__reviews reviews">
@@ -36,6 +38,7 @@ export default function Reviews(): JSX.Element {
           </div>
         </li>
       </ul>
+      <ReviewsForm />
     </section>
   );
 }
