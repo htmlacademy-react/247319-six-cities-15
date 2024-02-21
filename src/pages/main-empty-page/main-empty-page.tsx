@@ -2,10 +2,14 @@ import Header from '../../components/header/header';
 import NavTab from '../../components/nav-tab/nav-tab';
 import NoPlacesToStay from '../../components/no-places-to-stay/no-places-to-stay';
 import {CITIES} from '../../const';
+import {Helmet} from 'react-helmet-async';
 
 export default function MainEmptyPage(): JSX.Element {
   return (
     <div className="page page--gray page--main">
+      <Helmet>
+        <title>Oops... Select another city. 6 cities</title>
+      </Helmet>
       <Header />
       <main className="page__main page__main--index page__main--index-empty">
         <h1 className="visually-hidden">Cities</h1>

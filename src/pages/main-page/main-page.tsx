@@ -4,6 +4,7 @@ import NavTab from '../../components/nav-tab/nav-tab';
 import CitiesMap from '../../components/cities-map/cities-map';
 import {CITIES} from '../../const';
 import {mockData} from '../../mock-data';
+import {Helmet} from 'react-helmet-async';
 
 type MainPageProps = {
   placesFound: number;
@@ -12,6 +13,9 @@ type MainPageProps = {
 export default function MainPage({placesFound}: MainPageProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
+      <Helmet>
+        <title>Enjoy your trip. 6 cities</title>
+      </Helmet>
       <Header />
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>

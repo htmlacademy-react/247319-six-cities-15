@@ -7,10 +7,14 @@ import Reviews from '../../components/offer/reviews/reviews';
 import OfferMap from '../../components/offer/map/offer-map';
 import PlaceCard from '../../components/place-card/place-card';
 import {mockData} from '../../mock-data';
+import {Helmet} from 'react-helmet-async';
 
 export default function OfferPage(): JSX.Element {
   return (
     <div className="page">
+      <Helmet>
+        <title>Offer. 6 cities</title>
+      </Helmet>
       <Header />
       <main className="page__main page__main--offer">
         <section className="offer">
