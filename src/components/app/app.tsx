@@ -7,6 +7,7 @@ import FavoritesPage from '../../pages/favorites-page/favorites-page';
 import OfferPage from '../../pages/offer-page/offer-page';
 import NotFoundPage from '../../pages/not-found-page/not-found-page';
 import PrivateRoute from '../private-route/private-route';
+import ScrollToTop from '../scroll-to-top/scroll-to-top';
 
 type AppProps = {
   placesFound: number;
@@ -16,6 +17,7 @@ export default function App({placesFound}: AppProps): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route
             path={AppRoute.Main}
