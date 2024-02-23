@@ -1,9 +1,9 @@
 type AttributeType = {
-  attribute: string;
+  mapClassName: string;
 }
 
-export default function Map({attribute}: AttributeType): JSX.Element {
+export default function Map({mapClassName}: AttributeType): JSX.Element {
   return (
-    <section className={`${attribute}__map map`} />
+    <section className={`${mapClassName}__map map`} />
   );
 }

@@ -1,4 +1,4 @@
-import {MockDataType} from '../../mock-data';
+import {MockDataType} from '../../mocks/mock-data';
 import {Link} from 'react-router-dom';
 
 export default function PlaceCard({id, title, type, price, previewImage, rating, isPremium, isFavorite}: MockDataType): JSX.Element {

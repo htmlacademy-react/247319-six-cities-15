@@ -1,9 +1,11 @@
+import {NavLink} from 'react-router-dom';
+
 export default function NavTab({city}: {city: string}): JSX.Element {
   return (
     <li className="locations__item">
-      <a className="locations__item-link tabs__item" href="#">
+      <NavLink to='/' className="locations__item-link tabs__item">
         <span>{city}</span>
-      </a>
+      </NavLink>
     </li>
   );
 }
