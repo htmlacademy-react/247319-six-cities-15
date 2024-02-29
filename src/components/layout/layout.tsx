@@ -3,34 +3,46 @@ import {AppRoute, AuthorizationStatus} from '../../const';
 import {getAuthorizationStatus} from '../../mocks/authorization-status';
 import Logo from '../logo/logo';
 
-type RouteConfig = {
-  rootClassName?: string;
-  linkClassName?: string;
-  needRenderUserInfo?: boolean;
-  needRenderFooter?: boolean;
+type LayoutConfig = {
+  rootClassName: string;
+  linkClassName: string;
+  needRenderUserInfo: boolean;
+  needRenderFooter: boolean;
 }
 
-const RouteConfigMap: Record<string, RouteConfig> = {
+const DEFAULT_LAYOUT_CONFIG: LayoutConfig = {
+  rootClassName: '',
+  linkClassName: '',
+  needRenderUserInfo: true,
+  needRenderFooter: false,
+};
+
+const LayoutConfigMap: Record<AppRoute, LayoutConfig> = {
   [AppRoute.Root]: {
     rootClassName: ' page--gray page--main',
     linkClassName: ' header__logo-link--active',
+    needRenderUserInfo: true,
+    needRenderFooter: false,
   },
   [AppRoute.Login]: {
     rootClassName: ' page--gray page--login',
-    needRenderUserInfo: false
+    linkClassName: '',
+    needRenderUserInfo: false,
+    needRenderFooter: false,
   },
   [AppRoute.Favorites]: {
-    needRenderFooter: true
+    rootClassName: '',
+    linkClassName: '',
+    needRenderUserInfo: true,
+    needRenderFooter: true,
   },
-  [AppRoute.Offer]: {
-
-  }
+  [AppRoute.Offer]: DEFAULT_LAYOUT_CONFIG,
 };
 
 export default function Layout() {
   const {pathname} = useLocation();
-  const routeConfig: RouteConfig = RouteConfigMap[pathname] || {};
-  const {rootClassName = '', linkClassName = '', needRenderUserInfo = true, needRenderFooter = false} = routeConfig;
+  const layoutConfig: LayoutConfig = LayoutConfigMap[pathname as AppRoute] || DEFAULT_LAYOUT_CONFIG;
+  const {rootClassName, linkClassName, needRenderUserInfo, needRenderFooter} = layoutConfig;
   const authorizationStatus = getAuthorizationStatus();
 
   return (
