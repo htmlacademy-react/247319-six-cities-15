@@ -4,13 +4,22 @@ import {PLACE_RATING_RATIO} from '../../const';
 
 type PlaceCardProps = {
   offer: OffersType;
+  onMouseOver?: () => void;
+  // onMouseOut: () => void;
+  isActive?: boolean;
 }
 
-export default function PlaceCard({offer}: PlaceCardProps): JSX.Element {
+export default function PlaceCard({offer, onMouseOver, isActive}: PlaceCardProps): JSX.Element {
   const {id, title, type, price, previewImage, rating, isPremium, isFavorite} = offer;
 
   return (
-    <article className="cities__card place-card">
+    <article
+      className={`cities__card place-card ${isActive ? 'place-card--active' : ''}`}
+      //тег style 19 строчка только для визуально отслеживания состояния активной карточки. УДОЛИ ПОТОМ!!
+      style={isActive ? {border: '2px solid #4481c3'} : {}}
+      onMouseOver={onMouseOver}
+      // onMouseOut={onMouseOut}
+    >
       {isPremium ?
         <div className="place-card__mark">
           <span>Premium</span>

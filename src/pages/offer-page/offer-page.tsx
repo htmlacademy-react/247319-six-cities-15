@@ -23,7 +23,6 @@ export default function OfferPage({offers, reviews}: OfferPageProps): JSX.Elemen
   const nameCity = city.name;
   const {name, avatarUrl, isPro} = host;
   const nearPlaces = offers.filter((offer) => offer.city.name === selectedOffer.city.name);
-  // const selectedReviews = reviews.find((review) => review.id === offerId)!;
 
   return (
     <main className="page__main page__main--offer">
@@ -67,7 +66,10 @@ export default function OfferPage({offers, reviews}: OfferPageProps): JSX.Elemen
           </h2>
           <div className="near-places__list places__list">
             {nearPlaces.map((offer) => (
-              <PlaceCard key={offer.id} offer={offer} />
+              <PlaceCard
+                key={offer.id}
+                offer={offer}
+              />
             ))}
           </div>
         </section>

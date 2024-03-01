@@ -52,7 +52,9 @@ export default function App({placesFound, offers, reviews}: AppProps): JSX.Eleme
               path={AppRoute.Favorites}
               element={
                 <PrivateRoute authorizationStatus={authorizationStatus}>
-                  <FavoritesPage />
+                  <FavoritesPage
+                    offers={offers}
+                  />
                 </PrivateRoute>
               }
             />

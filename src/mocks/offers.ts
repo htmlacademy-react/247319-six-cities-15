@@ -132,7 +132,7 @@ export const offers: OffersType[] = [
       longitude: 2.335499,
       zoom: 16
     },
-    isFavorite: false,
+    isFavorite: true,
     isPremium: false,
     rating: 2.2,
     description: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. An independent House, strategically located between are and National Opera, but where the bustle of the city`comes to rest in this alley flowery and colorful.',
@@ -177,7 +177,7 @@ export const offers: OffersType[] = [
     rating: 1.9,
     description: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. An independent House, strategically located between are and National Opera, but where the bustle of the city`comes to rest in this alley flowery and colorful.',
     bedrooms: 5,
-    goods: ['bla', 'blabla', 'blablablab', 'bla', 'blabla'],
+    goods: ['bla', 'blabla', 'blablablab', 'blablah'],
     host: {
       name: 'Lapapi Lapupa',
       avatarUrl: 'https://15.design.htmlacademy.pro/static/avatar/1.jpg',
@@ -217,7 +217,7 @@ export const offers: OffersType[] = [
     rating: 3.8,
     description: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. An independent House, strategically located between are and National Opera, but where the bustle of the city`comes to rest in this alley flowery and colorful.',
     bedrooms: 7,
-    goods: ['bla', 'blabla', 'blablablab', 'bla', 'blabla', 'blablablab'],
+    goods: ['bla', 'blabla', 'blablablab', 'blam', 'blablam', 'blablabnlab'],
     host: {
       name: 'Trinity Matrix',
       avatarUrl: 'https://15.design.htmlacademy.pro/static/avatar/12.jpg',
@@ -257,7 +257,7 @@ export const offers: OffersType[] = [
     rating: 3,
     description: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. An independent House, strategically located between are and National Opera, but where the bustle of the city`comes to rest in this alley flowery and colorful.',
     bedrooms: 1,
-    goods: ['bla', 'blabla', 'blablablab'],
+    goods: ['bla', 'blablarr', 'blablablab'],
     host: {
       name: 'Darth Vader',
       avatarUrl: 'https://15.design.htmlacademy.pro/static/avatar/8.jpg',
