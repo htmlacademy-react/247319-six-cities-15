@@ -10,12 +10,16 @@ import PrivateRoute from '../private-route/private-route';
 import ScrollToTop from '../scroll-to-top/scroll-to-top';
 import Layout from '../layout/layout';
 import {getAuthorizationStatus} from '../../mocks/authorization-status';
+import {OffersType} from '../../mocks/offers';
+import {ReviewsType} from '../../mocks/reviews';
 
 type AppProps = {
   placesFound: number;
+  offers: OffersType[];
+  reviews: ReviewsType[];
 }
 
-export default function App({placesFound}: AppProps): JSX.Element {
+export default function App({placesFound, offers, reviews}: AppProps): JSX.Element {
   const authorizationStatus = getAuthorizationStatus();
 
   return (
@@ -29,7 +33,12 @@ export default function App({placesFound}: AppProps): JSX.Element {
           >
             <Route
               index
-              element={<MainPage placesFound={placesFound} />}
+              element={
+                <MainPage
+                  placesFound={placesFound}
+                  offers={offers}
+                />
+              }
             />
             <Route
               path={AppRoute.Login}
@@ -49,7 +58,12 @@ export default function App({placesFound}: AppProps): JSX.Element {
             />
             <Route
               path={AppRoute.Offer}
-              element={<OfferPage />}
+              element={
+                <OfferPage
+                  offers={offers}
+                  reviews={reviews}
+                />
+              }
             />
             <Route
               path="*"

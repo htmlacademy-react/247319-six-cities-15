@@ -1,15 +1,16 @@
-import PlaceCard from '../../components/place-card/place-card';
 import NavTab from '../../components/nav-tab/nav-tab';
 import Map from '../../components/map/map';
+import PlaceCardList from '../../components/place-card-list/place-card-list';
 import {CITIES} from '../../const';
-import {mockData} from '../../mocks/mock-data';
 import {Helmet} from 'react-helmet-async';
+import {OffersType} from '../../mocks/offers';
 
 type MainPageProps = {
   placesFound: number;
+  offers: OffersType[];
 }
 
-export default function MainPage({placesFound}: MainPageProps): JSX.Element {
+export default function MainPage({placesFound, offers}: MainPageProps): JSX.Element {
   return (
     <main className="page__main page__main--index">
       <Helmet>
@@ -59,21 +60,7 @@ export default function MainPage({placesFound}: MainPageProps): JSX.Element {
                 </li>
               </ul>
             </form>
-            <div className="cities__places-list places__list tabs__content">
-              {mockData.map((item) => (
-                <PlaceCard
-                  key={item.id}
-                  id={item.id}
-                  title={item.title}
-                  type={item.type}
-                  price={item.price}
-                  previewImage={item.previewImage}
-                  rating={item.rating}
-                  isPremium={item.isPremium}
-                  isFavorite={item.isFavorite}
-                />
-              ))}
-            </div>
+            <PlaceCardList offers={offers} />
           </section>
           <div className="cities__right-section">
             <Map mapClassName='cities' />

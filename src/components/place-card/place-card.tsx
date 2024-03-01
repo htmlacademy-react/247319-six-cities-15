@@ -1,7 +1,14 @@
-import {MockDataType} from '../../mocks/mock-data';
 import {Link} from 'react-router-dom';
+import {OffersType} from '../../mocks/offers';
+import {PLACE_RATING_RATIO} from '../../const';
 
-export default function PlaceCard({id, title, type, price, previewImage, rating, isPremium, isFavorite}: MockDataType): JSX.Element {
+type PlaceCardProps = {
+  offer: OffersType;
+}
+
+export default function PlaceCard({offer}: PlaceCardProps): JSX.Element {
+  const {id, title, type, price, previewImage, rating, isPremium, isFavorite} = offer;
+
   return (
     <article className="cities__card place-card">
       {isPremium ?
@@ -15,14 +22,14 @@ export default function PlaceCard({id, title, type, price, previewImage, rating,
             src={previewImage}
             width={260}
             height={200}
-            alt="Place image"
+            alt={title}
           />
         </Link>
       </div>
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
-            <b className="place-card__price-value">{price}</b>
+            <b className="place-card__price-value">€{price}</b>
             <span className="place-card__price-text">/&nbsp;night</span>
           </div>
           <button
@@ -41,7 +48,7 @@ export default function PlaceCard({id, title, type, price, previewImage, rating,
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{width: `${rating * 20}%` }} />
+            <span style={{width: `${rating * PLACE_RATING_RATIO}%` }} />
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
@@ -50,7 +57,7 @@ export default function PlaceCard({id, title, type, price, previewImage, rating,
             {title}
           </Link>
         </h2>
-        <p className="place-card__type">{type}</p>
+        <p className="place-card__type">{type.charAt(0).toUpperCase() + type.slice(1)}</p>
       </div>
     </article>
   );
