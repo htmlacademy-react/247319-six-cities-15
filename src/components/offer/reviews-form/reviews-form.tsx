@@ -1,4 +1,16 @@
+import {useState, ChangeEvent} from 'react';
+
 export default function ReviewsForm(): JSX.Element {
+  const [formData, setFormData] = useState({
+    rating: '',
+    textReview: '',
+  });
+
+  const handleFormChange = (evt: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const {name, value} = evt.target;
+    setFormData({...formData, [name]: value});
+  };
+
   return (
     <form className="reviews__form form" action="#" method="post">
       <label className="reviews__label form__label" htmlFor="review">
@@ -11,6 +23,7 @@ export default function ReviewsForm(): JSX.Element {
           defaultValue={5}
           id="5-stars"
           type="radio"
+          onChange={handleFormChange}
         />
         <label
           htmlFor="5-stars"
@@ -27,6 +40,7 @@ export default function ReviewsForm(): JSX.Element {
           defaultValue={4}
           id="4-stars"
           type="radio"
+          onChange={handleFormChange}
         />
         <label
           htmlFor="4-stars"
@@ -43,6 +57,7 @@ export default function ReviewsForm(): JSX.Element {
           defaultValue={3}
           id="3-stars"
           type="radio"
+          onChange={handleFormChange}
         />
         <label
           htmlFor="3-stars"
@@ -59,6 +74,7 @@ export default function ReviewsForm(): JSX.Element {
           defaultValue={2}
           id="2-stars"
           type="radio"
+          onChange={handleFormChange}
         />
         <label
           htmlFor="2-stars"
@@ -75,6 +91,7 @@ export default function ReviewsForm(): JSX.Element {
           defaultValue={1}
           id="1-star"
           type="radio"
+          onChange={handleFormChange}
         />
         <label
           htmlFor="1-star"
@@ -89,9 +106,10 @@ export default function ReviewsForm(): JSX.Element {
       <textarea
         className="reviews__textarea form__textarea"
         id="review"
-        name="review"
+        name="textReview"
         placeholder="Tell how was your stay, what you like and what can be improved"
-        defaultValue={''}
+        defaultValue={formData.textReview}
+        onChange={handleFormChange}
       />
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
