@@ -9,6 +9,7 @@ import {OffersType} from '../../mocks/offers';
 import {useParams} from 'react-router-dom';
 import {ReviewsType} from '../../mocks/reviews';
 import ReviewsList from '../../components/offer/review-list/review-list';
+import NotFoundPage from '../not-found-page/not-found-page';
 
 type OfferPageProps = {
   offers: OffersType[];
@@ -19,6 +20,11 @@ export default function OfferPage({offers, reviews}: OfferPageProps): JSX.Elemen
   const params = useParams();
   const offerId = params.id || '';
   const selectedOffer = offers.find((offer) => offer.id === offerId)!;
+
+  if(!selectedOffer) {
+    return <NotFoundPage />;
+  }
+
   const {city, description, goods, host, images} = selectedOffer;
   const nameCity = city.name;
   const {name, avatarUrl, isPro} = host;
@@ -54,7 +60,10 @@ export default function OfferPage({offers, reviews}: OfferPageProps): JSX.Elemen
               isPro={isPro}
               description={description}
             />
-            <ReviewsList reviews={reviews} offerId={offerId} />
+            <ReviewsList
+              reviews={reviews}
+              offerId={offerId}
+            />
           </div>
         </div>
         <Map mapClassName='offer' />

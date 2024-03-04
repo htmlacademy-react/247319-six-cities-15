@@ -1,4 +1,3 @@
-
 type GalleryProps = {
   src: string;
   alt: string;

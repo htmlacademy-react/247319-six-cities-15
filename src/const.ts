@@ -3,7 +3,7 @@ const PLACE_QUANTITY = 500;
 const DATE_FORMAT_IN_REVIEW = 'YY-MM-DD';
 const DATE_FORMAT_IN_REVIEW_TEXT = 'MMMM YYYY';
 
-export const PLACE_RATING_RATIO = 20;
+const PLACE_RATING_RATIO = 20;
 
 export const Setting = {
   PlacesFound: Math.floor(Math.random() * PLACE_QUANTITY)
@@ -39,7 +39,17 @@ function humanizeReviewTime(date: string) {
   return date ? dayjs(date).format(DATE_FORMAT_IN_REVIEW_TEXT.toUpperCase()) : '';
 }
 
+function capitalizeFirstLetter(text: string) {
+  return text.charAt(0).toUpperCase() + text.slice(1);
+}
+
+function convertToPercentage(rating: number) {
+  return `${rating * PLACE_RATING_RATIO}%`;
+}
+
 export {
   humanizeDateTime,
   humanizeReviewTime,
+  capitalizeFirstLetter,
+  convertToPercentage,
 };

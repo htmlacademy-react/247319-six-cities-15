@@ -13,9 +13,10 @@ export default function PlaceCardList({offers}: PlaceCardListProps): JSX.Element
     setActivePlaceCard(offerId);
   };
 
-  // const handleMouseOut = () => {
-  //   setActivePlaceCard(null);
-  // };
+  const handleMouseOut = () => {
+    setActivePlaceCard(null);
+  };
+
 
   return (
     <div className="cities__places-list places__list tabs__content">
@@ -24,7 +25,7 @@ export default function PlaceCardList({offers}: PlaceCardListProps): JSX.Element
           key={offer.id}
           offer={offer}
           onMouseOver={() => handleMouseOver(offer.id)}
-          // onMouseOut={handleMouseOut}
+          onMouseOut={handleMouseOut}
           isActive={activePlaceCard === offer.id}
         />
       ))}

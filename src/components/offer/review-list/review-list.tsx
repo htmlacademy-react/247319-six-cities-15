@@ -1,9 +1,8 @@
-import Reviews from '../reviews/reviews';
 import {ReviewsType} from '../../../mocks/reviews';
 import {getAuthorizationStatus} from '../../../mocks/authorization-status';
 import {AuthorizationStatus} from '../../../const';
+import Reviews from '../reviews/reviews';
 import ReviewsForm from '../../../components/offer/reviews-form/reviews-form';
-
 
 type ReviewsListProps = {
   reviews: ReviewsType[];

@@ -1,11 +1,10 @@
 import {OffersType} from '../../mocks/offers';
 import {Link} from 'react-router-dom';
-import {PLACE_RATING_RATIO} from '../../const';
+import {convertToPercentage, capitalizeFirstLetter} from '../../const';
 
 type FavoritesItemProps = {
   favoriteOffer: OffersType;
 }
-
 
 export default function FavoritesItem({favoriteOffer}: FavoritesItemProps): JSX.Element {
   const {id, title, type, price, city, previewImage, rating, isPremium, isFavorite} = favoriteOffer;
@@ -60,7 +59,7 @@ export default function FavoritesItem({favoriteOffer}: FavoritesItemProps): JSX.
             </div>
             <div className="place-card__rating rating">
               <div className="place-card__stars rating__stars">
-                <span style={{width: `${rating * PLACE_RATING_RATIO}%` }} />
+                <span style={{width: convertToPercentage(rating) }} />
                 <span className="visually-hidden">Rating</span>
               </div>
             </div>
@@ -69,7 +68,7 @@ export default function FavoritesItem({favoriteOffer}: FavoritesItemProps): JSX.
                 {title}
               </Link>
             </h2>
-            <p className="place-card__type">{type.charAt(0).toUpperCase() + type.slice(1)}</p>
+            <p className="place-card__type">{capitalizeFirstLetter(type)}</p>
           </div>
         </article>
       </div>

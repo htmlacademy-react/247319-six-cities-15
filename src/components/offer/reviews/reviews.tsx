@@ -1,5 +1,5 @@
 import {ReviewsType} from '../../../mocks/reviews';
-import {PLACE_RATING_RATIO} from '../../../const';
+import {convertToPercentage} from '../../../const';
 import {humanizeDateTime, humanizeReviewTime} from '../../../const';
 
 type ReviewsProps = {
@@ -27,7 +27,7 @@ export default function Reviews({reviews}: ReviewsProps): JSX.Element {
       <div className="reviews__info">
         <div className="reviews__rating rating">
           <div className="reviews__stars rating__stars">
-            <span style={{width: `${rating * PLACE_RATING_RATIO}%` }} />
+            <span style={{width: convertToPercentage(rating) }} />
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
