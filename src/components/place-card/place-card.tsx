@@ -1,9 +1,23 @@
-import {MockDataType} from '../../mocks/mock-data';
 import {Link} from 'react-router-dom';
+import {OffersType} from '../../mocks/offers';
+import {capitalizeFirstLetter, convertToPercentage} from '../../const';
 
-export default function PlaceCard({id, title, type, price, previewImage, rating, isPremium, isFavorite}: MockDataType): JSX.Element {
+type PlaceCardProps = {
+  offer: OffersType;
+  onMouseOver?: () => void;
+  onMouseOut?: () => void;
+  isActive?: boolean;
+}
+
+export default function PlaceCard({offer, onMouseOver, onMouseOut, isActive}: PlaceCardProps): JSX.Element {
+  const {id, title, type, price, previewImage, rating, isPremium, isFavorite} = offer;
+
   return (
-    <article className="cities__card place-card">
+    <article
+      className={`cities__card place-card ${isActive ? 'place-card--active' : ''}`}
+      onMouseOver={onMouseOver}
+      onMouseOut={onMouseOut}
+    >
       {isPremium ?
         <div className="place-card__mark">
           <span>Premium</span>
@@ -15,14 +29,14 @@ export default function PlaceCard({id, title, type, price, previewImage, rating,
             src={previewImage}
             width={260}
             height={200}
-            alt="Place image"
+            alt={title}
           />
         </Link>
       </div>
       <div className="place-card__info">
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
-            <b className="place-card__price-value">{price}</b>
+            <b className="place-card__price-value">€{price}</b>
             <span className="place-card__price-text">/&nbsp;night</span>
           </div>
           <button
@@ -41,7 +55,7 @@ export default function PlaceCard({id, title, type, price, previewImage, rating,
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{width: `${rating * 20}%` }} />
+            <span style={{width: convertToPercentage(rating)}} />
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
@@ -50,7 +64,7 @@ export default function PlaceCard({id, title, type, price, previewImage, rating,
             {title}
           </Link>
         </h2>
-        <p className="place-card__type">{type}</p>
+        <p className="place-card__type">{capitalizeFirstLetter(type)}</p>
       </div>
     </article>
   );
