@@ -1,16 +1,28 @@
+import { useState } from 'react';
 import NavTab from '../../components/nav-tab/nav-tab';
 import Map from '../../components/map/map';
 import PlaceCardList from '../../components/place-card-list/place-card-list';
-import {CITIES} from '../../const';
-import {Helmet} from 'react-helmet-async';
-import {OffersType} from '../../mocks/offers';
+import { CITIES } from '../../const';
+import { Helmet } from 'react-helmet-async';
+import { OffersType } from '../../mocks/offers';
+import { CITY } from '../../mocks/city';
 
 type MainPageProps = {
   placesFound: number;
   offers: OffersType[];
 }
 
-export default function MainPage({placesFound, offers}: MainPageProps): JSX.Element {
+export default function MainPage({ placesFound, offers }: MainPageProps): JSX.Element {
+  const [activePlaceCard, setActivePlaceCard] = useState<string | null>(offers[3].id);
+
+  const handleMouseOver = (offerId: string) => {
+    setActivePlaceCard(offerId);
+  };
+
+  const handleMouseOut = () => {
+    setActivePlaceCard(null);
+  };
+
   return (
     <main className="page__main page__main--index">
       <Helmet>
@@ -60,10 +72,19 @@ export default function MainPage({placesFound, offers}: MainPageProps): JSX.Elem
                 </li>
               </ul>
             </form>
-            <PlaceCardList offers={offers} />
+            <PlaceCardList
+              offers={offers}
+              onMouseOver={handleMouseOver}
+              onMouseOut={handleMouseOut}
+              activePlaceCard={activePlaceCard}
+            />
           </section>
           <div className="cities__right-section">
-            <Map mapClassName='cities' />
+            <Map
+              mapClassName='cities'
+              city={CITY}
+              selectedPoint={activePlaceCard}
+            />
           </div>
         </div>
       </div>
