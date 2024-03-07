@@ -83,7 +83,7 @@ export default function MainPage({ placesFound, offers }: MainPageProps): JSX.El
             <Map
               mapClassName='cities'
               city={CITY}
-              selectedPoint={activePlaceCard}
+              selectedOffer={activePlaceCard}
             />
           </div>
         </div>

@@ -66,7 +66,11 @@ export default function OfferPage({offers, reviews}: OfferPageProps): JSX.Elemen
             />
           </div>
         </div>
-        <Map mapClassName='offer' />
+        <Map
+          mapClassName='offer'
+          city={city}
+          selectedOffer={offerId}
+        />
       </section>
       <div className="container">
         <section className="near-places places">

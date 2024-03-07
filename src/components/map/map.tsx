@@ -1,18 +1,18 @@
-import { useRef, useEffect } from 'react';
+import {useRef, useEffect} from 'react';
 import useMap from './useMap';
 import leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { CityTypes } from '../../mocks/city';
-import { URL_MARKER_DEFAULT, URL_MARKER_CURRENT } from '../../const';
-import { offers } from '../../mocks/offers';
+import {CityTypes} from '../../mocks/city';
+import {URL_MARKER_DEFAULT, URL_MARKER_CURRENT} from '../../const';
+import {offers} from '../../mocks/offers';
 
 type MapProps = {
   mapClassName: string;
   city: CityTypes;
-  selectedPoint: string | null;
+  selectedOffer: string | null;
 };
 
-export default function Map({mapClassName, city, selectedPoint}: MapProps): JSX.Element {
+export default function Map({mapClassName, city, selectedOffer}: MapProps): JSX.Element {
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
 
@@ -36,15 +36,14 @@ export default function Map({mapClassName, city, selectedPoint}: MapProps): JSX.
             lat: offer.location.latitude,
             lng: offer.location.longitude,
           }, {
-            icon: (offer.id === selectedPoint)
+            icon: (offer.id === selectedOffer)
               ? currentCustomIcon
               : defaultCustomIcon,
           })
           .addTo(map);
       });
     }
-  }, [currentCustomIcon, defaultCustomIcon, map, selectedPoint]);
-
+  }, [currentCustomIcon, defaultCustomIcon, map, selectedOffer]);
 
   return (
     <section
