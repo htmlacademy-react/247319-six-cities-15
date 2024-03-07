@@ -4,15 +4,16 @@ import leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import {CityTypes} from '../../mocks/city';
 import {URL_MARKER_DEFAULT, URL_MARKER_CURRENT} from '../../const';
-import {offers} from '../../mocks/offers';
+import {OffersType} from '../../mocks/offers';
 
 type MapProps = {
   mapClassName: string;
   city: CityTypes;
   selectedOffer: string | null;
+  offers: OffersType[];
 };
 
-export default function Map({mapClassName, city, selectedOffer}: MapProps): JSX.Element {
+export default function Map({mapClassName, offers, city, selectedOffer}: MapProps): JSX.Element {
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
 
@@ -43,12 +44,11 @@ export default function Map({mapClassName, city, selectedOffer}: MapProps): JSX.
           .addTo(map);
       });
     }
-  }, [currentCustomIcon, defaultCustomIcon, map, selectedOffer]);
+  }, [currentCustomIcon, defaultCustomIcon, map, selectedOffer, offers]);
 
   return (
     <section
       ref={mapRef}
-      style={{ height: 733.61 }}
       className={`${mapClassName}__map map`}
     />
   );

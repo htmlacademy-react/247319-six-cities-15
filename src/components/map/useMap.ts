@@ -1,6 +1,6 @@
-import { useState, useRef, useEffect, MutableRefObject } from 'react';
+import {useState, useRef, useEffect, MutableRefObject} from 'react';
 import leaflet from 'leaflet';
-import { CityTypes } from '../../mocks/city';
+import {CityTypes} from '../../mocks/city';
 
 export default function useMap(
   mapRef: MutableRefObject<HTMLElement | null>,
@@ -21,7 +21,7 @@ export default function useMap(
 
       leaflet
         .tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-          attribution: '&copy; <a href="https://carto.com/attributions">CARTO</a>',
+          attribution: '&copy; <a href="https://carto.com/attributions">ROMAN</a>',
         })
         .addTo(instance);
 

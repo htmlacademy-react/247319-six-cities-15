@@ -22,7 +22,7 @@ export default function ReviewsList({reviews, offerId}: ReviewsListProps): JSX.E
       <ul className="reviews__list">
         {reviewsForOffer.map((review) => (
           <Reviews
-            key={review.id}
+            key={review.user.name}
             reviews={review}
           />
         ))}

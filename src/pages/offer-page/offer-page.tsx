@@ -1,15 +1,16 @@
+import {useState} from 'react';
 import Gallery from '../../components/offer/gallery/gallery';
 import OfferMainInfo from '../../components/offer/main-info/offer-main-info';
 import InsideOptions from '../../components/offer/inside-options/inside-options';
 import Host from '../../components/offer/host/host';
 import Map from '../../components/map/map';
-import PlaceCard from '../../components/place-card/place-card';
 import {Helmet} from 'react-helmet-async';
 import {OffersType} from '../../mocks/offers';
 import {useParams} from 'react-router-dom';
 import {ReviewsType} from '../../mocks/reviews';
 import ReviewsList from '../../components/offer/review-list/review-list';
 import NotFoundPage from '../not-found-page/not-found-page';
+import PlaceCardList from '../../components/place-card-list/place-card-list';
 
 type OfferPageProps = {
   offers: OffersType[];
@@ -21,6 +22,16 @@ export default function OfferPage({offers, reviews}: OfferPageProps): JSX.Elemen
   const offerId = params.id || '';
   const selectedOffer = offers.find((offer) => offer.id === offerId)!;
 
+  const [activePlaceCard, setActivePlaceCard] = useState<string | null>(offerId);
+
+  const handleMouseOver = (hoveredOfferId: string) => {
+    setActivePlaceCard(hoveredOfferId);
+  };
+
+  const handleMouseOut = () => {
+    setActivePlaceCard(offerId);
+  };
+
   if(!selectedOffer) {
     return <NotFoundPage />;
   }
@@ -28,7 +39,10 @@ export default function OfferPage({offers, reviews}: OfferPageProps): JSX.Elemen
   const {city, description, goods, host, images} = selectedOffer;
   const nameCity = city.name;
   const {name, avatarUrl, isPro} = host;
-  const nearPlaces = offers.filter((offer) => offer.city.name === selectedOffer.city.name);
+  const nearPlaces = offers
+    .filter((offer) => offer.city.name === selectedOffer.city.name && offer.id !== selectedOffer.id)
+    .slice(0, 3);
+  const placesForMap = [...nearPlaces, selectedOffer];
 
   return (
     <main className="page__main page__main--offer">
@@ -68,8 +82,9 @@ export default function OfferPage({offers, reviews}: OfferPageProps): JSX.Elemen
         </div>
         <Map
           mapClassName='offer'
+          offers={placesForMap}
           city={city}
-          selectedOffer={offerId}
+          selectedOffer={activePlaceCard}
         />
       </section>
       <div className="container">
@@ -78,12 +93,12 @@ export default function OfferPage({offers, reviews}: OfferPageProps): JSX.Elemen
             Other places in the neighbourhood
           </h2>
           <div className="near-places__list places__list">
-            {nearPlaces.map((offer) => (
-              <PlaceCard
-                key={offer.id}
-                offer={offer}
-              />
-            ))}
+            <PlaceCardList
+              offers={nearPlaces}
+              onMouseOver={handleMouseOver}
+              onMouseOut={handleMouseOut}
+              activePlaceCard={activePlaceCard}
+            />
           </div>
         </section>
       </div>

@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import {useState} from 'react';
 import NavTab from '../../components/nav-tab/nav-tab';
 import Map from '../../components/map/map';
 import PlaceCardList from '../../components/place-card-list/place-card-list';
-import { CITIES } from '../../const';
-import { Helmet } from 'react-helmet-async';
-import { OffersType } from '../../mocks/offers';
-import { CITY } from '../../mocks/city';
+import {CITIES} from '../../const';
+import {Helmet} from 'react-helmet-async';
+import {OffersType} from '../../mocks/offers';
+import {CITY} from '../../mocks/city';
 
 type MainPageProps = {
   placesFound: number;
@@ -82,6 +82,7 @@ export default function MainPage({ placesFound, offers }: MainPageProps): JSX.El
           <div className="cities__right-section">
             <Map
               mapClassName='cities'
+              offers={offers}
               city={CITY}
               selectedOffer={activePlaceCard}
             />
