@@ -94,6 +94,8 @@ export default function OfferPage({offers, reviews}: OfferPageProps): JSX.Elemen
           </h2>
           <div className="near-places__list places__list">
             <PlaceCardList
+              classNameList={'near-places__list'}
+              classNameItem={'near-places__card'}
               offers={nearPlaces}
               onMouseOver={handleMouseOver}
               onMouseOut={handleMouseOut}

@@ -92,6 +92,8 @@ export default function MainPage({ placesFound, offers }: MainPageProps): JSX.El
                   </ul>
                 </form>
                 <PlaceCardList
+                  classNameList={'cities__places-list'}
+                  classNameItem={'cities__card'}
                   offers={offers}
                   onMouseOver={handleMouseOver}
                   onMouseOut={handleMouseOut}

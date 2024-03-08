@@ -7,14 +7,15 @@ type PlaceCardProps = {
   onMouseOver?: () => void;
   onMouseOut?: () => void;
   isActive?: boolean;
+  classNameItem: string;
 }
 
-export default function PlaceCard({offer, onMouseOver, onMouseOut, isActive}: PlaceCardProps): JSX.Element {
+export default function PlaceCard({offer, onMouseOver, onMouseOut, isActive, classNameItem}: PlaceCardProps): JSX.Element {
   const {id, title, type, price, previewImage, rating, isPremium, isFavorite} = offer;
 
   return (
     <article
-      className={`cities__card place-card ${isActive ? 'place-card--active' : ''}`}
+      className={`${classNameItem} place-card ${isActive ? 'place-card--active' : ''}`}
       onMouseOver={onMouseOver}
       onMouseOut={onMouseOut}
     >

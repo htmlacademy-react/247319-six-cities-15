@@ -6,13 +6,16 @@ type PlaceCardListProps = {
   onMouseOver: (offerId: string) => void;
   onMouseOut: () => void;
   activePlaceCard: string | null;
+  classNameList: string;
+  classNameItem: string;
 }
 
-export default function PlaceCardList({offers, onMouseOver, onMouseOut, activePlaceCard}: PlaceCardListProps): JSX.Element {
+export default function PlaceCardList({offers, onMouseOver, onMouseOut, activePlaceCard, classNameList, classNameItem}: PlaceCardListProps): JSX.Element {
   return (
-    <div className="cities__places-list places__list tabs__content">
+    <div className={`${classNameList} places__list tabs__content`}>
       {offers.map((offer) => (
         <PlaceCard
+          classNameItem={classNameItem}
           key={offer.id}
           offer={offer}
           onMouseOver={() => onMouseOver(offer.id)}
