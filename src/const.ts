@@ -31,19 +31,25 @@ export enum AuthorizationStatus {
   Unknown = 'UNKNOWN',
 }
 
-function humanizeDateTime(date: string) {
+function humanizeDateTime(date?: string): string {
   return date ? dayjs(date).format(DATE_FORMAT_IN_REVIEW.toUpperCase()) : '';
 }
 
-function humanizeReviewTime(date: string) {
+function humanizeReviewTime(date?: string): string {
   return date ? dayjs(date).format(DATE_FORMAT_IN_REVIEW_TEXT.toUpperCase()) : '';
 }
 
-function capitalizeFirstLetter(text: string) {
+function capitalizeFirstLetter(text: string | undefined | null): string {
+  if (text === undefined || text === null) {
+    return '';
+  }
   return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
-function convertToPercentage(rating: number) {
+function convertToPercentage(rating: number | undefined | null): string {
+  if (rating === undefined || rating === null) {
+    return '';
+  }
   return `${rating * PLACE_RATING_RATIO}%`;
 }
 
