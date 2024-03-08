@@ -13,21 +13,27 @@ type MapProps = {
   offers: OffersType[];
 };
 
+const defaultCustomIcon = leaflet.icon({
+  iconUrl: URL_MARKER_DEFAULT,
+  iconSize: [27, 39],
+  iconAnchor: [20, 40]
+});
+
+const currentCustomIcon = leaflet.icon({
+  iconUrl: URL_MARKER_CURRENT,
+  iconSize: [27, 39],
+  iconAnchor: [20, 40]
+});
+
 export default function Map({mapClassName, offers, city, selectedOffer}: MapProps): JSX.Element {
   const mapRef = useRef(null);
   const map = useMap(mapRef, city);
 
-  const defaultCustomIcon = leaflet.icon({
-    iconUrl: URL_MARKER_DEFAULT,
-    iconSize: [27, 39],
-    iconAnchor: [20, 40]
-  });
-
-  const currentCustomIcon = leaflet.icon({
-    iconUrl: URL_MARKER_CURRENT,
-    iconSize: [27, 39],
-    iconAnchor: [20, 40]
-  });
+  useEffect(() => {
+    if (map) {
+      map.setView([city.location.latitude, city.location.longitude], city.location.zoom);
+    }
+  }, [city, map]);
 
   useEffect(() => {
     if (map) {
@@ -44,7 +50,7 @@ export default function Map({mapClassName, offers, city, selectedOffer}: MapProp
           .addTo(map);
       });
     }
-  }, [currentCustomIcon, defaultCustomIcon, map, selectedOffer, offers]);
+  }, [map, selectedOffer, offers, city]);
 
   return (
     <section

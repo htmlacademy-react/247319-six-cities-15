@@ -5,7 +5,7 @@ import PlaceCardList from '../../components/place-card-list/place-card-list';
 import {CITIES} from '../../const';
 import {Helmet} from 'react-helmet-async';
 import {OffersType} from '../../mocks/offers';
-import {CITY} from '../../mocks/city';
+import {CITY, getCityData} from '../../mocks/city';
 
 type MainPageProps = {
   placesFound: number;
@@ -14,6 +14,11 @@ type MainPageProps = {
 
 export default function MainPage({ placesFound, offers }: MainPageProps): JSX.Element {
   const [activePlaceCard, setActivePlaceCard] = useState<string | null>(offers[3].id);
+  const [currentLocation, setCurrentLocation] = useState<string>(CITY[0].name);
+
+  const handleNavTabClick = (city: string) => {
+    setCurrentLocation(city);
+  };
 
   const handleMouseOver = (offerId: string) => {
     setActivePlaceCard(offerId);
@@ -36,6 +41,8 @@ export default function MainPage({ placesFound, offers }: MainPageProps): JSX.El
               <NavTab
                 key={city}
                 city={city}
+                isActive={city === currentLocation}
+                onNavTabClick={() => handleNavTabClick(city)}
               />
             ))}
           </ul>
@@ -83,7 +90,7 @@ export default function MainPage({ placesFound, offers }: MainPageProps): JSX.El
             <Map
               mapClassName='cities'
               offers={offers}
-              city={CITY}
+              city={getCityData(currentLocation)}
               selectedOffer={activePlaceCard}
             />
           </div>
