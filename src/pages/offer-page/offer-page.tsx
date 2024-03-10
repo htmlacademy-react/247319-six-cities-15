@@ -92,16 +92,14 @@ export default function OfferPage({offers, reviews}: OfferPageProps): JSX.Elemen
           <h2 className="near-places__title">
             Other places in the neighbourhood
           </h2>
-          <div className="near-places__list places__list">
-            <PlaceCardList
-              classNameList={'near-places__list'}
-              classNameItem={'near-places__card'}
-              offers={nearPlaces}
-              onMouseOver={handleMouseOver}
-              onMouseOut={handleMouseOut}
-              activePlaceCard={activePlaceCard}
-            />
-          </div>
+          <PlaceCardList
+            classNameList={'near-places__list'}
+            classNameItem={'near-places__card'}
+            offers={nearPlaces}
+            onMouseOver={handleMouseOver}
+            onMouseOut={handleMouseOut}
+            activePlaceCard={activePlaceCard}
+          />
         </section>
       </div>
     </main>

@@ -16,11 +16,8 @@ type MainPageProps = {
 export default function MainPage({ placesFound, offers }: MainPageProps): JSX.Element {
   const [activePlaceCard, setActivePlaceCard] = useState<string | null>(null);
   const [currentLocation, setCurrentLocation] = useState<string>(CITY[0].name);
-  let emptyPage = false;
 
-  if (offers.length === 0) {
-    emptyPage = true;
-  }
+  const emptyPage = offers.length === 0;
 
   const handleNavTabClick = (city: string) => {
     setCurrentLocation(city);
