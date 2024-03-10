@@ -39,19 +39,19 @@ export const offers: OffersType[] = [
     type: 'apartment',
     price: 400,
     city: {
-      name: 'Brussels',
+      name: 'Paris',
       location: {
-        latitude: 48.85661,
-        longitude: 2.351499,
+        latitude: 52.3676,
+        longitude: 4.9041,
         zoom: 13
       }
     },
     location: {
-      latitude: 48.868610000000004,
-      longitude: 2.342499,
+      latitude: 48.8566,
+      longitude: 2.3522,
       zoom: 16
     },
-    isFavorite: true,
+    isFavorite: false,
     isPremium: true,
     rating: 4.7,
     previewImage: 'https://15.design.htmlacademy.pro/static/hotel/6.jpg',
@@ -80,16 +80,16 @@ export const offers: OffersType[] = [
     price: 444,
     previewImage: 'https://15.design.htmlacademy.pro/static/hotel/3.jpg',
     city: {
-      name: 'Brussels',
+      name: 'Amsterdam',
       location: {
-        latitude: 48.85661,
-        longitude: 2.351499,
+        latitude: 52.3676,
+        longitude: 4.9041,
         zoom: 13
       }
     },
     location: {
-      latitude: 48.858610000000006,
-      longitude: 2.330499,
+      latitude: 52.3889553943508,
+      longitude: 4.836309666406198,
       zoom: 16
     },
     isFavorite: false,
@@ -120,19 +120,19 @@ export const offers: OffersType[] = [
     price: 500,
     previewImage: 'https://15.design.htmlacademy.pro/static/hotel/2.jpg',
     city: {
-      name: 'Paris',
+      name: 'Amsterdam',
       location: {
-        latitude: 48.85661,
-        longitude: 2.351499,
+        latitude: 52.3676,
+        longitude: 4.9041,
         zoom: 13
       }
     },
     location: {
-      latitude: 48.834610000000005,
-      longitude: 2.335499,
+      latitude: 52.3909553943508,
+      longitude: 4.929309666406198,
       zoom: 16
     },
-    isFavorite: true,
+    isFavorite: false,
     isPremium: false,
     rating: 2.2,
     description: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. An independent House, strategically located between are and National Opera, but where the bustle of the city`comes to rest in this alley flowery and colorful.',
@@ -160,19 +160,19 @@ export const offers: OffersType[] = [
     price: 555,
     previewImage: 'https://15.design.htmlacademy.pro/static/hotel/16.jpg',
     city: {
-      name: 'Paris',
+      name: 'Amsterdam',
       location: {
-        latitude: 48.85661,
-        longitude: 2.351499,
+        latitude: 52.3676,
+        longitude: 4.9041,
         zoom: 13
       }
     },
     location: {
-      latitude: 48.85761,
-      longitude: 2.358499,
+      latitude: 52.3499553943508,
+      longitude: 4.877309666406198,
       zoom: 16
     },
-    isFavorite: true,
+    isFavorite: false,
     isPremium: true,
     rating: 1.9,
     description: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. An independent House, strategically located between are and National Opera, but where the bustle of the city`comes to rest in this alley flowery and colorful.',
@@ -202,14 +202,14 @@ export const offers: OffersType[] = [
     city: {
       name: 'Amsterdam',
       location: {
-        latitude: 48.85661,
-        longitude: 2.351499,
+        latitude: 52.3676,
+        longitude: 4.9041,
         zoom: 13
       }
     },
     location: {
-      latitude: 48.87561,
-      longitude: 2.375499,
+      latitude: 52.3709553943508,
+      longitude: 4.919309666406198,
       zoom: 16
     },
     isFavorite: true,
@@ -242,17 +242,17 @@ export const offers: OffersType[] = [
     city: {
       name: 'Amsterdam',
       location: {
-        latitude: 48.85661,
-        longitude: 2.351499,
+        latitude: 52.3676,
+        longitude: 4.9041,
         zoom: 13
       }
     },
     location: {
-      latitude: 48.87961000000001,
-      longitude: 2.353499,
+      latitude: 52.3889553943508,
+      longitude: 4.944309666406198,
       zoom: 16
     },
-    isFavorite: false,
+    isFavorite: true,
     isPremium: true,
     rating: 3,
     description: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. An independent House, strategically located between are and National Opera, but where the bustle of the city`comes to rest in this alley flowery and colorful.',

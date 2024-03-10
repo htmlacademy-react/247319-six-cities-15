@@ -29,7 +29,11 @@ export default function App({placesFound, offers, reviews}: AppProps): JSX.Eleme
         <Routes>
           <Route
             path={AppRoute.Root}
-            element={<Layout />}
+            element={
+              <Layout
+                offers={offers}
+              />
+            }
           >
             <Route
               index

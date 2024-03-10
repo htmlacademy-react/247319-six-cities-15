@@ -2,6 +2,11 @@ import {Outlet, Link, useLocation} from 'react-router-dom';
 import {AppRoute, AuthorizationStatus} from '../../const';
 import {getAuthorizationStatus} from '../../mocks/authorization-status';
 import Logo from '../logo/logo';
+import {OffersType} from '../../mocks/offers';
+
+type LayoutProps = {
+  offers: OffersType[];
+}
 
 type LayoutConfig = {
   rootClassName: string;
@@ -39,14 +44,16 @@ const LayoutConfigMap: Record<AppRoute, LayoutConfig> = {
   [AppRoute.Offer]: DEFAULT_LAYOUT_CONFIG,
 };
 
-export default function Layout() {
+export default function Layout({offers}: LayoutProps) {
   const {pathname} = useLocation();
   const layoutConfig: LayoutConfig = LayoutConfigMap[pathname as AppRoute] || DEFAULT_LAYOUT_CONFIG;
   const {rootClassName, linkClassName, needRenderUserInfo, needRenderFooter} = layoutConfig;
   const authorizationStatus = getAuthorizationStatus();
+  const favoritesOffers = offers.filter((offer) => offer.isFavorite);
+  const favoritesEmptyPage = favoritesOffers.length === 0;
 
   return (
-    <div className={`page${rootClassName}`}>
+    <div className={`page${rootClassName} ${favoritesEmptyPage ? 'page--favorites-empty' : ''}`}>
       <header className="header">
         <div className="container">
           <div className="header__wrapper">
@@ -73,7 +80,7 @@ export default function Layout() {
                       {authorizationStatus === AuthorizationStatus.Auth ? (
                         <>
                           <span className="header__user-name user__name">Oliver.conner@gmail.com</span>
-                          <span className="header__favorite-count">3</span>
+                          <span className="header__favorite-count">{favoritesOffers.length}</span>
                         </>
                       ) : <span className="header__login">Sign in</span>}
                     </Link>
