@@ -10,16 +10,23 @@ import PrivateRoute from '../private-route/private-route';
 import ScrollToTop from '../scroll-to-top/scroll-to-top';
 import Layout from '../layout/layout';
 import {getAuthorizationStatus} from '../../mocks/authorization-status';
-import {OfferTypes} from '../../types/offer';
+import {offers} from '../../mocks/offers';
 import {ReviewTypes} from '../../types/review';
+import {setOffers} from '../../store/action';
+import {useAppDispatch} from '../../hooks/store';
+import {useEffect} from 'react';
 
 type AppProps = {
-  offers: OfferTypes[];
   reviews: ReviewTypes[];
 }
 
-export default function App({offers, reviews}: AppProps): JSX.Element {
+export default function App({reviews}: AppProps): JSX.Element {
   const authorizationStatus = getAuthorizationStatus();
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(setOffers(offers));
+  });
 
   return (
     <HelmetProvider>
@@ -29,9 +36,7 @@ export default function App({offers, reviews}: AppProps): JSX.Element {
           <Route
             path={AppRoute.Root}
             element={
-              <Layout
-                offers={offers}
-              />
+              <Layout />
             }
           >
             <Route
@@ -52,9 +57,7 @@ export default function App({offers, reviews}: AppProps): JSX.Element {
               path={AppRoute.Favorites}
               element={
                 <PrivateRoute authorizationStatus={authorizationStatus}>
-                  <FavoritesPage
-                    offers={offers}
-                  />
+                  <FavoritesPage />
                 </PrivateRoute>
               }
             />
@@ -62,7 +65,6 @@ export default function App({offers, reviews}: AppProps): JSX.Element {
               path={AppRoute.Offer}
               element={
                 <OfferPage
-                  offers={offers}
                   reviews={reviews}
                 />
               }

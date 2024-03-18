@@ -1,13 +1,10 @@
-import { Helmet } from 'react-helmet-async';
-import {OfferTypes} from '../../types/offer';
+import {Helmet} from 'react-helmet-async';
 import FavoritesList from '../../components/favorites-list/favorites-list';
 import FavEmpty from '../../components/fav-empty/fav-empty';
+import {useAppSelector} from '../../hooks/store';
 
-type FavoritesPageProps = {
-  offers: OfferTypes[];
-}
-
-export default function FavoritesPage({ offers }: FavoritesPageProps): JSX.Element {
+export default function FavoritesPage(): JSX.Element {
+  const offers = useAppSelector((state) => state.offers);
   const favoritesOffers = offers.filter((offer) => offer.isFavorite);
   const favoritesEmptyPage = favoritesOffers.length === 0;
   const pageTitle = favoritesEmptyPage ? 'There are no favorites places' : 'Favorites. 6 cities';
