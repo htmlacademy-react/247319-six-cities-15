@@ -1,22 +1,10 @@
 import dayjs from 'dayjs';
-const PLACE_QUANTITY = 500;
+
+export const URL_MARKER_DEFAULT = '../markup/img/pin.svg';
+export const URL_MARKER_CURRENT = '../markup/img/pin-active.svg';
 const DATE_FORMAT_IN_REVIEW = 'YY-MM-DD';
 const DATE_FORMAT_IN_REVIEW_TEXT = 'MMMM YYYY';
-
 const PLACE_RATING_RATIO = 20;
-
-export const Setting = {
-  PlacesFound: Math.floor(Math.random() * PLACE_QUANTITY)
-};
-
-export const CITIES: string[] = [
-  'Paris',
-  'Cologne',
-  'Brussels',
-  'Amsterdam',
-  'Hamburg',
-  'Dusseldorf'
-];
 
 export enum AppRoute {
   Root = '/',
@@ -52,10 +40,6 @@ function convertToPercentage(rating: number | undefined | null): string {
   }
   return `${rating * PLACE_RATING_RATIO}%`;
 }
-
-export const URL_MARKER_DEFAULT = '../markup/img/pin.svg';
-
-export const URL_MARKER_CURRENT = '../markup/img/pin-active.svg';
 
 export {
   humanizeDateTime,

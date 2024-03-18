@@ -5,16 +5,16 @@ import InsideOptions from '../../components/offer/inside-options/inside-options'
 import Host from '../../components/offer/host/host';
 import Map from '../../components/map/map';
 import {Helmet} from 'react-helmet-async';
-import {OffersType} from '../../mocks/offers';
+import {OfferTypes} from '../../types/offer';
 import {useParams} from 'react-router-dom';
-import {ReviewsType} from '../../mocks/reviews';
+import {ReviewTypes} from '../../types/review';
 import ReviewsList from '../../components/offer/review-list/review-list';
 import NotFoundPage from '../not-found-page/not-found-page';
 import PlaceCardList from '../../components/place-card-list/place-card-list';
 
 type OfferPageProps = {
-  offers: OffersType[];
-  reviews: ReviewsType[];
+  offers: OfferTypes[];
+  reviews: ReviewTypes[];
 }
 
 export default function OfferPage({offers, reviews}: OfferPageProps): JSX.Element {

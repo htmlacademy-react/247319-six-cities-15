@@ -1,27 +1,23 @@
-import { useState } from 'react';
+import {useState} from 'react';
 import NavTab from '../../components/nav-tab/nav-tab';
 import Map from '../../components/map/map';
 import PlaceCardList from '../../components/place-card-list/place-card-list';
-import { CITIES } from '../../const';
-import { Helmet } from 'react-helmet-async';
-import { OffersType } from '../../mocks/offers';
-import { CITY, getCityData } from '../../mocks/city';
+import {Helmet} from 'react-helmet-async';
+import {CITIES, getCityData} from '../../const/city';
 import NoPlacesToStay from '../../components/no-places-to-stay/no-places-to-stay';
+import {useAppDispatch, useAppSelector} from '../../hooks/store';
+import {changeLocation} from '../../store/action';
 
-type MainPageProps = {
-  placesFound: number;
-  offers: OffersType[];
-}
-
-export default function MainPage({ placesFound, offers }: MainPageProps): JSX.Element {
+export default function MainPage(): JSX.Element {
   const [activePlaceCard, setActivePlaceCard] = useState<string | null>(null);
-  const [currentLocation, setCurrentLocation] = useState<string>(CITY[0].name);
 
-  const emptyPage = offers.length === 0;
+  const offers = useAppSelector((state) => state.offers);
+  const currentLocation = useAppSelector((state) => state.city);
+  const dispatch = useAppDispatch();
 
-  const handleNavTabClick = (city: string) => {
-    setCurrentLocation(city);
-  };
+  const currentOffers = offers.filter((offer) => offer.city.name === currentLocation);
+  const placesFound = currentOffers.length;
+  const emptyPage = currentOffers.length === 0;
 
   const handleMouseOver = (offerId: string) => {
     setActivePlaceCard(offerId);
@@ -40,12 +36,14 @@ export default function MainPage({ placesFound, offers }: MainPageProps): JSX.El
       <div className="tabs">
         <section className="locations container">
           <ul className="locations__list tabs__list">
-            {CITIES.map((city: string) => (
+            {CITIES.map((city) => (
               <NavTab
-                key={city}
-                city={city}
-                isActive={city === currentLocation}
-                onNavTabClick={() => handleNavTabClick(city)}
+                key={city.id}
+                city={city.name}
+                isActive={city.name === currentLocation}
+                onNavTabClick={() => {
+                  dispatch(changeLocation(city.name));
+                }}
               />
             ))}
           </ul>
@@ -61,7 +59,7 @@ export default function MainPage({ placesFound, offers }: MainPageProps): JSX.El
             <>
               <section className="cities__places places">
                 <h2 className="visually-hidden">Places</h2>
-                <b className="places__found">{placesFound} places to stay in Amsterdam</b>
+                <b className="places__found">{placesFound} places to stay in {currentLocation}</b>
                 <form className="places__sorting" action="#" method="get">
                   <span className="places__sorting-caption">Sort by </span>
                   <span className="places__sorting-type" tabIndex={0}>
@@ -91,7 +89,7 @@ export default function MainPage({ placesFound, offers }: MainPageProps): JSX.El
                 <PlaceCardList
                   classNameList={'cities__places-list'}
                   classNameItem={'cities__card'}
-                  offers={offers}
+                  offers={currentOffers}
                   onMouseOver={handleMouseOver}
                   onMouseOut={handleMouseOut}
                   activePlaceCard={activePlaceCard}
@@ -100,7 +98,7 @@ export default function MainPage({ placesFound, offers }: MainPageProps): JSX.El
               <div className="cities__right-section">
                 <Map
                   mapClassName='cities'
-                  offers={offers}
+                  offers={currentOffers}
                   city={getCityData(currentLocation)}
                   selectedOffer={activePlaceCard}
                 />

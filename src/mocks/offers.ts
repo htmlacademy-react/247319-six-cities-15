@@ -1,38 +1,6 @@
-export type OffersType = {
-  id: string;
-  title: string;
-  type: string;
-  price: number;
-  city: {
-    name: string;
-    location: {
-      latitude: number;
-      longitude: number;
-      zoom: number;
-    };
-  };
-  location: {
-    latitude: number;
-    longitude: number;
-    zoom: number;
-  };
-  isFavorite: boolean;
-  isPremium: boolean;
-  rating: number;
-  previewImage: string;
-  description: string;
-  bedrooms: number;
-  goods: string[];
-  host: {
-    name: string;
-    avatarUrl: string;
-    isPro: boolean;
-  };
-  images: string[];
-  maxAdults: number;
-}
+import {OfferTypes} from '../types/offer';
 
-export const offers: OffersType[] = [
+export const offers: OfferTypes[] = [
   {
     id: '854bbd80-6ba5-4c41-a0e1-6fc8b5c4fad4',
     title: 'The Pondhouse - A Magical Place',
@@ -41,14 +9,14 @@ export const offers: OffersType[] = [
     city: {
       name: 'Paris',
       location: {
-        latitude: 52.3676,
-        longitude: 4.9041,
+        latitude: 48.85661,
+        longitude: 2.351499,
         zoom: 13
       }
     },
     location: {
-      latitude: 48.8566,
-      longitude: 2.3522,
+      latitude: 48.868610000000004,
+      longitude: 2.342499,
       zoom: 16
     },
     isFavorite: false,
@@ -82,14 +50,14 @@ export const offers: OffersType[] = [
     city: {
       name: 'Paris',
       location: {
-        latitude: 52.3676,
-        longitude: 4.9041,
+        latitude: 48.85661,
+        longitude: 2.351499,
         zoom: 13
       }
     },
     location: {
-      latitude: 52.3889553943508,
-      longitude: 4.836309666406198,
+      latitude: 48.858610000000006,
+      longitude: 2.330499,
       zoom: 16
     },
     isFavorite: true,
@@ -122,14 +90,14 @@ export const offers: OffersType[] = [
     city: {
       name: 'Paris',
       location: {
-        latitude: 52.3676,
-        longitude: 4.9041,
+        latitude: 48.85661,
+        longitude: 2.351499,
         zoom: 13
       }
     },
     location: {
-      latitude: 52.3909553943508,
-      longitude: 4.929309666406198,
+      latitude: 48.834610000000005,
+      longitude: 2.335499,
       zoom: 16
     },
     isFavorite: true,
@@ -175,6 +143,46 @@ export const offers: OffersType[] = [
     isFavorite: false,
     isPremium: true,
     rating: 1.9,
+    description: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. An independent House, strategically located between are and National Opera, but where the bustle of the city`comes to rest in this alley flowery and colorful.',
+    bedrooms: 5,
+    goods: ['bla', 'blabla', 'blablablab', 'blablah'],
+    host: {
+      name: 'Lapapi Lapupa',
+      avatarUrl: 'https://15.design.htmlacademy.pro/static/avatar/1.jpg',
+      isPro: false
+    },
+    images: [
+      'https://15.design.htmlacademy.pro/static/hotel/16.jpg',
+      'https://15.design.htmlacademy.pro/static/hotel/17.jpg',
+      'https://15.design.htmlacademy.pro/static/hotel/18.jpg',
+      'https://15.design.htmlacademy.pro/static/hotel/19.jpg',
+      'https://15.design.htmlacademy.pro/static/hotel/20.jpg',
+      'https://15.design.htmlacademy.pro/static/hotel/2.jpg',
+    ],
+    maxAdults: 6
+  },
+  {
+    id: 'b859adcf-6725-46c9-927e-8764281cf9d5',
+    title: 'Loft BLABLA Studio in the Central Area',
+    type: 'apartment',
+    price: 333,
+    previewImage: 'https://15.design.htmlacademy.pro/static/hotel/16.jpg',
+    city: {
+      name: 'Amsterdam',
+      location: {
+        latitude: 52.3676,
+        longitude: 4.9041,
+        zoom: 13
+      }
+    },
+    location: {
+      latitude: 52.36554,
+      longitude: 4.911976,
+      zoom: 16
+    },
+    isFavorite: false,
+    isPremium: false,
+    rating: 3.9,
     description: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. An independent House, strategically located between are and National Opera, but where the bustle of the city`comes to rest in this alley flowery and colorful.',
     bedrooms: 5,
     goods: ['bla', 'blabla', 'blablablab', 'blablah'],
@@ -253,6 +261,126 @@ export const offers: OffersType[] = [
       zoom: 16
     },
     isFavorite: true,
+    isPremium: true,
+    rating: 3,
+    description: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. An independent House, strategically located between are and National Opera, but where the bustle of the city`comes to rest in this alley flowery and colorful.',
+    bedrooms: 1,
+    goods: ['bla', 'blablarr', 'blablablab'],
+    host: {
+      name: 'Darth Vader',
+      avatarUrl: 'https://15.design.htmlacademy.pro/static/avatar/8.jpg',
+      isPro: true
+    },
+    images: [
+      'https://15.design.htmlacademy.pro/static/hotel/13.jpg',
+      'https://15.design.htmlacademy.pro/static/hotel/15.jpg',
+      'https://15.design.htmlacademy.pro/static/hotel/16.jpg',
+      'https://15.design.htmlacademy.pro/static/hotel/17.jpg',
+      'https://15.design.htmlacademy.pro/static/hotel/18.jpg',
+      'https://15.design.htmlacademy.pro/static/hotel/19.jpg',
+    ],
+    maxAdults: 2
+  },
+  {
+    id: '2c9a23c3-8eef-4fe5-84fc-0dab85512cfe',
+    title: 'Loft Studio in the Central Area',
+    type: 'house',
+    price: 300,
+    previewImage: 'https://15.design.htmlacademy.pro/static/hotel/5.jpg',
+    city: {
+      name: 'Cologne',
+      location: {
+        latitude: 50.938361,
+        longitude: 6.959974,
+        zoom: 13
+      }
+    },
+    location: {
+      latitude: 50.950361,
+      longitude: 6.961974,
+      zoom: 16
+    },
+    isFavorite: true,
+    isPremium: true,
+    rating: 3,
+    description: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. An independent House, strategically located between are and National Opera, but where the bustle of the city`comes to rest in this alley flowery and colorful.',
+    bedrooms: 1,
+    goods: ['bla', 'blablarr', 'blablablab'],
+    host: {
+      name: 'Darth Vader',
+      avatarUrl: 'https://15.design.htmlacademy.pro/static/avatar/8.jpg',
+      isPro: true
+    },
+    images: [
+      'https://15.design.htmlacademy.pro/static/hotel/13.jpg',
+      'https://15.design.htmlacademy.pro/static/hotel/15.jpg',
+      'https://15.design.htmlacademy.pro/static/hotel/16.jpg',
+      'https://15.design.htmlacademy.pro/static/hotel/17.jpg',
+      'https://15.design.htmlacademy.pro/static/hotel/18.jpg',
+      'https://15.design.htmlacademy.pro/static/hotel/19.jpg',
+    ],
+    maxAdults: 2
+  },
+  {
+    id: 'e6ed52cf-eb63-41e3-a696-b34fdc62e83d',
+    title: 'Loft Studio in the Central Area',
+    type: 'house',
+    price: 100,
+    previewImage: 'https://15.design.htmlacademy.pro/static/hotel/2.jpg',
+    city: {
+      name: 'Cologne',
+      location: {
+        latitude: 50.938361,
+        longitude: 6.959974,
+        zoom: 13
+      }
+    },
+    location: {
+      latitude: 50.932361,
+      longitude: 6.937974,
+      zoom: 16
+    },
+    isFavorite: false,
+    isPremium: true,
+    rating: 3,
+    description: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. An independent House, strategically located between are and National Opera, but where the bustle of the city`comes to rest in this alley flowery and colorful.',
+    bedrooms: 1,
+    goods: ['bla', 'blablarr', 'blablablab'],
+    host: {
+      name: 'Darth Vader',
+      avatarUrl: 'https://15.design.htmlacademy.pro/static/avatar/8.jpg',
+      isPro: true
+    },
+    images: [
+      'https://15.design.htmlacademy.pro/static/hotel/13.jpg',
+      'https://15.design.htmlacademy.pro/static/hotel/15.jpg',
+      'https://15.design.htmlacademy.pro/static/hotel/16.jpg',
+      'https://15.design.htmlacademy.pro/static/hotel/17.jpg',
+      'https://15.design.htmlacademy.pro/static/hotel/18.jpg',
+      'https://15.design.htmlacademy.pro/static/hotel/19.jpg',
+    ],
+    maxAdults: 2
+  },
+  {
+    id: 'c401632e-62e1-47bd-a9fa-f14068fbcecc',
+    title: 'Loft Studio in the Central Area',
+    type: 'house',
+    price: 200,
+    previewImage: 'https://15.design.htmlacademy.pro/static/hotel/20.jpg',
+    city: {
+      name: 'Cologne',
+      location: {
+        latitude: 50.938361,
+        longitude: 6.959974,
+        zoom: 13
+      }
+    },
+    location: {
+      latitude: 50.934361,
+      longitude: 6.943974,
+      zoom: 16
+    },
+    isFavorite: false,
     isPremium: true,
     rating: 3,
     description: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. An independent House, strategically located between are and National Opera, but where the bustle of the city`comes to rest in this alley flowery and colorful.',

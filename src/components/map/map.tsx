@@ -2,15 +2,15 @@ import {useRef, useEffect} from 'react';
 import useMap from './useMap';
 import leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import {CityTypes} from '../../mocks/city';
-import {URL_MARKER_DEFAULT, URL_MARKER_CURRENT} from '../../const';
-import {OffersType} from '../../mocks/offers';
+import {CityTypes} from '../../types/city';
+import {URL_MARKER_DEFAULT, URL_MARKER_CURRENT} from '../../const/const';
+import {OfferTypes} from '../../types/offer';
 
 type MapProps = {
   mapClassName: string;
   city: CityTypes;
   selectedOffer: string | null;
-  offers: OffersType[];
+  offers: OfferTypes[];
 };
 
 const defaultCustomIcon = leaflet.icon({

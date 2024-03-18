@@ -1,16 +1,6 @@
-export type ReviewsType = {
-  id: string;
-  date: string;
-  user: {
-    name: string;
-    avatarUrl: string;
-    isPro: boolean;
-  };
-  comment: string;
-  rating: number;
-}
+import {ReviewTypes} from '../types/review';
 
-export const reviews: ReviewsType[] = [
+export const reviews: ReviewTypes[] = [
   {
     id: '854bbd80-6ba5-4c41-a0e1-6fc8b5c4fad4',
     date: '2019-05-08T14:13:56.569Z',

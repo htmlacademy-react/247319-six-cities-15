@@ -1,9 +1,9 @@
-import {ReviewsType} from '../../../mocks/reviews';
-import {convertToPercentage} from '../../../const';
-import {humanizeDateTime, humanizeReviewTime} from '../../../const';
+import {ReviewTypes} from '../../../types/review';
+import {convertToPercentage} from '../../../const/const';
+import {humanizeDateTime, humanizeReviewTime} from '../../../const/const';
 
 type ReviewsProps = {
-  reviews: ReviewsType;
+  reviews: ReviewTypes;
 }
 
 export default function Reviews({reviews}: ReviewsProps): JSX.Element {

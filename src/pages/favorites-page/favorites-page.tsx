@@ -1,10 +1,10 @@
 import { Helmet } from 'react-helmet-async';
-import { OffersType } from '../../mocks/offers';
+import {OfferTypes} from '../../types/offer';
 import FavoritesList from '../../components/favorites-list/favorites-list';
 import FavEmpty from '../../components/fav-empty/fav-empty';
 
 type FavoritesPageProps = {
-  offers: OffersType[];
+  offers: OfferTypes[];
 }
 
 export default function FavoritesPage({ offers }: FavoritesPageProps): JSX.Element {

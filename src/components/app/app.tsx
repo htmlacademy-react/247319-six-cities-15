@@ -1,5 +1,5 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import {AppRoute} from '../../const';
+import {AppRoute} from '../../const/const';
 import {HelmetProvider} from 'react-helmet-async';
 import MainPage from '../../pages/main-page/main-page';
 import LoginPage from '../../pages/login-page/login-page';
@@ -10,16 +10,15 @@ import PrivateRoute from '../private-route/private-route';
 import ScrollToTop from '../scroll-to-top/scroll-to-top';
 import Layout from '../layout/layout';
 import {getAuthorizationStatus} from '../../mocks/authorization-status';
-import {OffersType} from '../../mocks/offers';
-import {ReviewsType} from '../../mocks/reviews';
+import {OfferTypes} from '../../types/offer';
+import {ReviewTypes} from '../../types/review';
 
 type AppProps = {
-  placesFound: number;
-  offers: OffersType[];
-  reviews: ReviewsType[];
+  offers: OfferTypes[];
+  reviews: ReviewTypes[];
 }
 
-export default function App({placesFound, offers, reviews}: AppProps): JSX.Element {
+export default function App({offers, reviews}: AppProps): JSX.Element {
   const authorizationStatus = getAuthorizationStatus();
 
   return (
@@ -38,10 +37,7 @@ export default function App({placesFound, offers, reviews}: AppProps): JSX.Eleme
             <Route
               index
               element={
-                <MainPage
-                  placesFound={placesFound}
-                  offers={offers}
-                />
+                <MainPage />
               }
             />
             <Route

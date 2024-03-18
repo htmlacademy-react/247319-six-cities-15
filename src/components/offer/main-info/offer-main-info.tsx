@@ -1,8 +1,8 @@
-import {OffersType} from '../../../mocks/offers';
-import {convertToPercentage, capitalizeFirstLetter} from '../../../const';
+import {OfferTypes} from '../../../types/offer';
+import {convertToPercentage, capitalizeFirstLetter} from '../../../const/const';
 
 type OfferMainInfoProps = {
-  selectedOffer: OffersType;
+  selectedOffer: OfferTypes;
 }
 
 export default function OfferMainInfo({selectedOffer}: OfferMainInfoProps): JSX.Element {

@@ -1,11 +1,11 @@
-import {ReviewsType} from '../../../mocks/reviews';
+import {ReviewTypes} from '../../../types/review';
 import {getAuthorizationStatus} from '../../../mocks/authorization-status';
-import {AuthorizationStatus} from '../../../const';
+import {AuthorizationStatus} from '../../../const/const';
 import Reviews from '../reviews/reviews';
 import ReviewsForm from '../../../components/offer/reviews-form/reviews-form';
 
 type ReviewsListProps = {
-  reviews: ReviewsType[];
+  reviews: ReviewTypes[];
   offerId: string;
 }
 

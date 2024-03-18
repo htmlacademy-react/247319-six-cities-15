@@ -1,9 +1,9 @@
-import { OffersType } from '../../mocks/offers';
+import {OfferTypes} from '../../types/offer';
 import { Link } from 'react-router-dom';
-import { convertToPercentage, capitalizeFirstLetter } from '../../const';
+import { convertToPercentage, capitalizeFirstLetter } from '../../const/const';
 
 type FavoritesItemProps = {
-  favoriteOffer: OffersType;
+  favoriteOffer: OfferTypes;
 }
 
 export default function FavoritesItem({favoriteOffer}: FavoritesItemProps): JSX.Element {

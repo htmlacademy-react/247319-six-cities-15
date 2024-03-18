@@ -1,11 +1,11 @@
 import {Outlet, Link, useLocation} from 'react-router-dom';
-import {AppRoute, AuthorizationStatus} from '../../const';
+import {AppRoute, AuthorizationStatus} from '../../const/const';
 import {getAuthorizationStatus} from '../../mocks/authorization-status';
 import Logo from '../logo/logo';
-import {OffersType} from '../../mocks/offers';
+import {OfferTypes} from '../../types/offer';
 
 type LayoutProps = {
-  offers: OffersType[];
+  offers: OfferTypes[];
 }
 
 type LayoutConfig = {

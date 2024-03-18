@@ -1,20 +1,20 @@
-import {OffersType} from '../../mocks/offers';
+import {OfferTypes} from '../../types/offer';
 import FavoritesItem from '../favorites-item/favorites-item';
 import {Link} from 'react-router-dom';
 
 type FavoritesListProps = {
-  favoriteOffers: OffersType[];
+  favoriteOffers: OfferTypes[];
 }
 
 export default function FavoritesList({favoriteOffers}: FavoritesListProps): JSX.Element {
-  const groupedOffersByCity: Record<string, OffersType[]> = favoriteOffers.reduce((acc, favoriteOffer) => {
+  const groupedOffersByCity: Record<string, OfferTypes[]> = favoriteOffers.reduce((acc, favoriteOffer) => {
     const city = favoriteOffer.city.name;
     if (!acc[city]) {
       acc[city] = [];
     }
     acc[city].push(favoriteOffer);
     return acc;
-  }, {} as Record<string, OffersType[]>);
+  }, {} as Record<string, OfferTypes[]>);
 
   return (
     <ul className="favorites__list">

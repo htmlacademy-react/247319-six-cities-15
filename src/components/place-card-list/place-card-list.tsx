@@ -1,8 +1,8 @@
 import PlaceCard from '../place-card/place-card';
-import {OffersType} from '../../mocks/offers';
+import {OfferTypes} from '../../types/offer';
 
 type PlaceCardListProps = {
-  offers: OffersType[];
+  offers: OfferTypes[];
   onMouseOver: (offerId: string) => void;
   onMouseOut: () => void;
   activePlaceCard: string | null;
