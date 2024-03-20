@@ -26,7 +26,7 @@ export default function App({reviews}: AppProps): JSX.Element {
 
   useEffect(() => {
     dispatch(setOffers(offers));
-  });
+  }, [dispatch]);
 
   return (
     <HelmetProvider>
