@@ -1,9 +1,9 @@
 import {Link} from 'react-router-dom';
-import {OffersType} from '../../mocks/offers';
-import {capitalizeFirstLetter, convertToPercentage} from '../../const';
+import {OfferTypes} from '../../types/offer';
+import {capitalizeFirstLetter, convertToPercentage} from '../../const/const';
 
 type PlaceCardProps = {
-  offer: OffersType;
+  offer: OfferTypes;
   onMouseOver?: () => void;
   onMouseOut?: () => void;
   isActive?: boolean;

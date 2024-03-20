@@ -1,12 +1,8 @@
 import {Outlet, Link, useLocation} from 'react-router-dom';
-import {AppRoute, AuthorizationStatus} from '../../const';
+import {AppRoute, AuthorizationStatus} from '../../const/const';
 import {getAuthorizationStatus} from '../../mocks/authorization-status';
 import Logo from '../logo/logo';
-import {OffersType} from '../../mocks/offers';
-
-type LayoutProps = {
-  offers: OffersType[];
-}
+import {useAppSelector} from '../../hooks/store';
 
 type LayoutConfig = {
   rootClassName: string;
@@ -44,7 +40,8 @@ const LayoutConfigMap: Record<AppRoute, LayoutConfig> = {
   [AppRoute.Offer]: DEFAULT_LAYOUT_CONFIG,
 };
 
-export default function Layout({offers}: LayoutProps) {
+export default function Layout() {
+  const offers = useAppSelector((state) => state.offers);
   const {pathname} = useLocation();
   const layoutConfig: LayoutConfig = LayoutConfigMap[pathname as AppRoute] || DEFAULT_LAYOUT_CONFIG;
   const {rootClassName, linkClassName, needRenderUserInfo, needRenderFooter} = layoutConfig;

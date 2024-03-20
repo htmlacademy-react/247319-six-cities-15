@@ -1,5 +1,5 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import {AppRoute} from '../../const';
+import {AppRoute} from '../../const/const';
 import {HelmetProvider} from 'react-helmet-async';
 import MainPage from '../../pages/main-page/main-page';
 import LoginPage from '../../pages/login-page/login-page';
@@ -10,17 +10,23 @@ import PrivateRoute from '../private-route/private-route';
 import ScrollToTop from '../scroll-to-top/scroll-to-top';
 import Layout from '../layout/layout';
 import {getAuthorizationStatus} from '../../mocks/authorization-status';
-import {OffersType} from '../../mocks/offers';
-import {ReviewsType} from '../../mocks/reviews';
+import {offers} from '../../mocks/offers';
+import {ReviewTypes} from '../../types/review';
+import {setOffers} from '../../store/action';
+import {useAppDispatch} from '../../hooks/store';
+import {useEffect} from 'react';
 
 type AppProps = {
-  placesFound: number;
-  offers: OffersType[];
-  reviews: ReviewsType[];
+  reviews: ReviewTypes[];
 }
 
-export default function App({placesFound, offers, reviews}: AppProps): JSX.Element {
+export default function App({reviews}: AppProps): JSX.Element {
   const authorizationStatus = getAuthorizationStatus();
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(setOffers(offers));
+  }, [dispatch]);
 
   return (
     <HelmetProvider>
@@ -30,18 +36,13 @@ export default function App({placesFound, offers, reviews}: AppProps): JSX.Eleme
           <Route
             path={AppRoute.Root}
             element={
-              <Layout
-                offers={offers}
-              />
+              <Layout />
             }
           >
             <Route
               index
               element={
-                <MainPage
-                  placesFound={placesFound}
-                  offers={offers}
-                />
+                <MainPage />
               }
             />
             <Route
@@ -56,9 +57,7 @@ export default function App({placesFound, offers, reviews}: AppProps): JSX.Eleme
               path={AppRoute.Favorites}
               element={
                 <PrivateRoute authorizationStatus={authorizationStatus}>
-                  <FavoritesPage
-                    offers={offers}
-                  />
+                  <FavoritesPage />
                 </PrivateRoute>
               }
             />
@@ -66,7 +65,6 @@ export default function App({placesFound, offers, reviews}: AppProps): JSX.Eleme
               path={AppRoute.Offer}
               element={
                 <OfferPage
-                  offers={offers}
                   reviews={reviews}
                 />
               }
