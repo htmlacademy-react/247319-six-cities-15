@@ -1,7 +1,8 @@
 import {Outlet, Link, useLocation} from 'react-router-dom';
 import {AppRoute, AuthorizationStatus} from '../../const/const';
 import Logo from '../logo/logo';
-import {useAppSelector} from '../../hooks/store';
+import {useAppDispatch, useAppSelector} from '../../hooks/store';
+import {logoutAction} from '../../store/api-actions';
 
 type LayoutConfig = {
   rootClassName: string;
@@ -47,6 +48,11 @@ export default function Layout() {
   const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
   const favoritesOffers = offers.filter((offer) => offer.isFavorite);
   const favoritesEmptyPage = favoritesOffers.length === 0;
+  const dispatch = useAppDispatch();
+
+  const handleLogout = () => {
+    dispatch(logoutAction());
+  };
 
   return (
     <div className={`page${rootClassName} ${favoritesEmptyPage ? 'page--favorites-empty' : ''}`}>
@@ -83,7 +89,11 @@ export default function Layout() {
                   </li>
                   {authorizationStatus === AuthorizationStatus.Auth ? (
                     <li className="header__nav-item">
-                      <Link to='/' className="header__nav-link">
+                      <Link
+                        to='/'
+                        className="header__nav-link"
+                        onClick={handleLogout}
+                      >
                         <span className="header__signout">Sign out</span>
                       </Link>
                     </li>
