@@ -2,6 +2,7 @@ import axios, {AxiosInstance, AxiosResponse, AxiosError, InternalAxiosRequestCon
 import {StatusCodes} from 'http-status-codes';
 import {getToken} from './token';
 import {processErrorHandle} from './process-error-handle';
+import {ROOT_URL} from '../const/const';
 
 type DetailMessageType = {
   type: string;
@@ -16,7 +17,7 @@ const StatusCodeMapping: Record<number, boolean> = {
 
 const shouldDisplayError = (response: AxiosResponse) => !!StatusCodeMapping[response.status];
 
-const BACKEND_URL = 'https://15.design.htmlacademy.pro/six-cities';
+const BACKEND_URL = ROOT_URL;
 const REQUEST_TIMEOUT = 5000;
 
 //Создаём экземпляр класса AxiosInstance - функцию, которая создаёт объект настроек с базовым урл
