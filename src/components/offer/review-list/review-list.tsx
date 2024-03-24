@@ -1,8 +1,8 @@
 import {ReviewTypes} from '../../../types/review';
-import {getAuthorizationStatus} from '../../../mocks/authorization-status';
 import {AuthorizationStatus} from '../../../const/const';
 import Reviews from '../reviews/reviews';
 import ReviewsForm from '../../../components/offer/reviews-form/reviews-form';
+import {useAppSelector} from '../../../hooks/store';
 
 type ReviewsListProps = {
   reviews: ReviewTypes[];
@@ -10,7 +10,7 @@ type ReviewsListProps = {
 }
 
 export default function ReviewsList({reviews, offerId}: ReviewsListProps): JSX.Element {
-  const authorizationStatus = getAuthorizationStatus();
+  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
   const reviewsForOffer = reviews.filter((review) => review.id === offerId);
   const reviewsLength = reviewsForOffer.length;
 
