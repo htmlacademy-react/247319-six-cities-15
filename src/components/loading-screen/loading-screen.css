@@ -1,0 +1,9 @@
+.loading {
+  background-color: #4481c3;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  flex-direction: column;
+};

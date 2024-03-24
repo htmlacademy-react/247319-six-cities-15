@@ -1,6 +1,5 @@
 import {Outlet, Link, useLocation} from 'react-router-dom';
 import {AppRoute, AuthorizationStatus} from '../../const/const';
-import {getAuthorizationStatus} from '../../mocks/authorization-status';
 import Logo from '../logo/logo';
 import {useAppSelector} from '../../hooks/store';
 
@@ -45,7 +44,7 @@ export default function Layout() {
   const {pathname} = useLocation();
   const layoutConfig: LayoutConfig = LayoutConfigMap[pathname as AppRoute] || DEFAULT_LAYOUT_CONFIG;
   const {rootClassName, linkClassName, needRenderUserInfo, needRenderFooter} = layoutConfig;
-  const authorizationStatus = getAuthorizationStatus();
+  const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
   const favoritesOffers = offers.filter((offer) => offer.isFavorite);
   const favoritesEmptyPage = favoritesOffers.length === 0;
 

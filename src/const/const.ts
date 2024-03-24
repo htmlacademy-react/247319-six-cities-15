@@ -2,15 +2,24 @@ import dayjs from 'dayjs';
 
 export const URL_MARKER_DEFAULT = '../markup/img/pin.svg';
 export const URL_MARKER_CURRENT = '../markup/img/pin-active.svg';
+export const ROOT_URL = 'https://15.design.htmlacademy.pro/six-cities';
 const DATE_FORMAT_IN_REVIEW = 'YY-MM-DD';
 const DATE_FORMAT_IN_REVIEW_TEXT = 'MMMM YYYY';
 const PLACE_RATING_RATIO = 20;
+export const TIMEOUT_SHOW_ERROR = 2000;
 
 export enum AppRoute {
   Root = '/',
   Login = '/login',
   Favorites = '/favorites',
   Offer = '/offer/:id',
+}
+
+export enum APIRoute {
+  Offers = '/offers',
+  Favorite = '/favorite',
+  Login = '/login',
+  Logout = '/logout',
 }
 
 export enum AuthorizationStatus {
