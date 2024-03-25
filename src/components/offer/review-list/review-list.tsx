@@ -1,18 +1,12 @@
-import {ReviewTypes} from '../../../types/review';
 import {AuthorizationStatus} from '../../../const/const';
 import Reviews from '../reviews/reviews';
 import ReviewsForm from '../../../components/offer/reviews-form/reviews-form';
 import {useAppSelector} from '../../../hooks/store';
 
-type ReviewsListProps = {
-  reviews: ReviewTypes[];
-  offerId: string;
-}
-
-export default function ReviewsList({reviews, offerId}: ReviewsListProps): JSX.Element {
+export default function ReviewsList(): JSX.Element {
   const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
-  const reviewsForOffer = reviews.filter((review) => review.id === offerId);
-  const reviewsLength = reviewsForOffer.length;
+  const reviews = useAppSelector((state) => state.reviews);
+  const reviewsLength = reviews.length;
 
   return(
     <section className="offer__reviews reviews">
@@ -20,9 +14,9 @@ export default function ReviewsList({reviews, offerId}: ReviewsListProps): JSX.E
         Reviews · <span className="reviews__amount">{reviewsLength}</span>
       </h2>
       <ul className="reviews__list">
-        {reviewsForOffer.map((review) => (
+        {reviews.map((review) => (
           <Reviews
-            key={review.user.name}
+            key={review.id}
             reviews={review}
           />
         ))}
