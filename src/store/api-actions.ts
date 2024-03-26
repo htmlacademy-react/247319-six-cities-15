@@ -9,9 +9,7 @@ import {
   setActiveOffer,
   setError,
   setOffersDataLoadingStatus,
-  setActiveOfferDataLoadingStatus,
-  setNearPlacesDataLoadingStatus,
-  setReviewsDataLoadingStatus,
+  setOfferNotExist,
 } from './action';
 import { OfferTypes } from '../types/offer';
 import { AppDispatch, State } from '../types/state';
@@ -53,11 +51,14 @@ export const fetchOffer = createAsyncThunk<void, string, {
 >(
   'data/fetchOffer',
   async (offerId, { dispatch, extra: api }) => {
-    dispatch(setActiveOfferDataLoadingStatus(true));
-    const {data} = await api.get<OfferTypes>(`${APIRoute.Offers}/${offerId}`);
-    dispatch(setActiveOfferDataLoadingStatus(false));
-    dispatch(setActiveOffer(data));
-  },
+    try {
+      dispatch(setOfferNotExist(false));
+      const {data} = await api.get<OfferTypes>(`${APIRoute.Offers}/${offerId}`);
+      dispatch(setActiveOffer(data));
+    } catch (err) {
+      dispatch(setOfferNotExist(true));
+    }
+  }
 );
 
 export const fetchNearPlaces = createAsyncThunk<void, string, {
@@ -67,9 +68,7 @@ export const fetchNearPlaces = createAsyncThunk<void, string, {
 }>(
   'data/fetchNearPlaces',
   async (offerId, { dispatch, extra: api }) => {
-    dispatch(setNearPlacesDataLoadingStatus(true));
     const {data} = await api.get<OfferTypes[]>(`${APIRoute.Offers}/${offerId}/nearby`);
-    dispatch(setNearPlacesDataLoadingStatus(false));
     dispatch(loadNearPlaces(data));
   },
 );
@@ -81,9 +80,7 @@ export const fetchReviews = createAsyncThunk<void, string, {
 }>(
   'data/fetchReviews',
   async(offerId, {dispatch, extra: api}) => {
-    dispatch(setReviewsDataLoadingStatus(true));
     const {data} = await api.get<ReviewTypes[]>(`${APIRoute.Comments}/${offerId}`);
-    dispatch(setReviewsDataLoadingStatus(false));
     dispatch(loadReviews(data));
   }
 );

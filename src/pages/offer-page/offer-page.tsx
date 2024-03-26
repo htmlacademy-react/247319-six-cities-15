@@ -13,6 +13,7 @@ import { useAppSelector } from '../../hooks/store';
 import { fetchOffer, fetchNearPlaces, fetchReviews } from '../../store/api-actions';
 import { OfferTypes } from '../../types/offer';
 import { store } from '../../store';
+import LoadingScreen from '../../components/loading-screen/loading-screen';
 
 export default function OfferPage(): JSX.Element {
   const params = useParams();
@@ -25,9 +26,9 @@ export default function OfferPage(): JSX.Element {
   }, [offerId]);
 
   const selectedOffer = useAppSelector((state) => state.activeOffer);
-  const nearPlaces = useAppSelector((state) => state.nearPlaces);
-  const nearThreePlaces = nearPlaces.slice(0, 3);
-  const placesForMap: OfferTypes[] = selectedOffer ? [...nearThreePlaces, selectedOffer] : [];
+  const nearPlaces = useAppSelector((state) => state.nearPlaces).slice(0, 3);
+  const isOfferNotExist = useAppSelector((state) => state.isOfferExist);
+  const placesForMap: OfferTypes[] = selectedOffer ? [...nearPlaces, selectedOffer] : [];
 
   const [activePlaceCard, setActivePlaceCard] = useState<string | null>(offerId);
 
@@ -39,8 +40,12 @@ export default function OfferPage(): JSX.Element {
     setActivePlaceCard(offerId);
   };
 
-  if (!selectedOffer) {
+  if (isOfferNotExist) {
     return <NotFoundPage />;
+  }
+
+  if (selectedOffer === null) {
+    return <LoadingScreen />;
   }
 
   const { city, description, goods, host, images } = selectedOffer || {};
@@ -95,7 +100,7 @@ export default function OfferPage(): JSX.Element {
           <PlaceCardList
             classNameList={'near-places__list'}
             classNameItem={'near-places__card'}
-            offers={nearThreePlaces}
+            offers={nearPlaces}
             onMouseOver={handleMouseOver}
             onMouseOut={handleMouseOut}
             activePlaceCard={activePlaceCard}

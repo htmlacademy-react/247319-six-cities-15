@@ -9,9 +9,7 @@ import {
   setActiveOffer,
   setError,
   setOffersDataLoadingStatus,
-  setActiveOfferDataLoadingStatus,
-  setNearPlacesDataLoadingStatus,
-  setReviewsDataLoadingStatus,
+  setOfferNotExist,
 } from './action';
 import {CITIES, CityName} from '../const/city';
 import { AuthorizationStatus } from '../const/const';
@@ -24,11 +22,9 @@ type InitialStateType = {
   error: string | null;
   isOffersDataLoading: boolean;
   activeOffer: OfferTypes | null;
-  isActiveOfferDataLoading: boolean;
   nearPlaces: OfferTypes[];
-  isNearPlacesDataLoading: boolean;
   reviews: ReviewTypes[];
-  isReviewsDataLoading: boolean;
+  isOfferExist: boolean;
 }
 
 const initialState: InitialStateType = {
@@ -38,11 +34,9 @@ const initialState: InitialStateType = {
   error: null,
   isOffersDataLoading: false,
   activeOffer: null,
-  isActiveOfferDataLoading: false,
   nearPlaces: [],
-  isNearPlacesDataLoading: false,
   reviews: [],
-  isReviewsDataLoading: false,
+  isOfferExist: false,
 };
 
 const reducer = createReducer(initialState, (builder) => {
@@ -65,20 +59,14 @@ const reducer = createReducer(initialState, (builder) => {
     .addCase(setActiveOffer, (state, action) => {
       state.activeOffer = action.payload;
     })
-    .addCase(setActiveOfferDataLoadingStatus, (state, action) => {
-      state.isActiveOfferDataLoading = action.payload;
-    })
     .addCase(loadNearPlaces, (state, action) => {
       state.nearPlaces = action.payload;
-    })
-    .addCase(setNearPlacesDataLoadingStatus, (state, action) => {
-      state.isNearPlacesDataLoading = action.payload;
     })
     .addCase(loadReviews, (state, action) => {
       state.reviews = action.payload;
     })
-    .addCase(setReviewsDataLoadingStatus, (state, action) => {
-      state.isReviewsDataLoading = action.payload;
+    .addCase(setOfferNotExist, (state, action) => {
+      state.isOfferExist = action.payload;
     });
 });
 
