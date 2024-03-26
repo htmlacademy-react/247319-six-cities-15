@@ -1,7 +1,11 @@
 import LoginForm from '../../components/login-form/login-form';
 import {Helmet} from 'react-helmet-async';
+import {Link} from 'react-router-dom';
+import { useAppSelector } from '../../hooks/store';
 
 export default function LoginPage(): JSX.Element {
+  const city = useAppSelector((state) => state.city);
+
   return (
     <main className="page__main page__main--login">
       <Helmet>
@@ -11,9 +15,9 @@ export default function LoginPage(): JSX.Element {
         <LoginForm />
         <section className="locations locations--login locations--current">
           <div className="locations__item">
-            <a className="locations__item-link" href="#">
-              <span>Amsterdam</span>
-            </a>
+            <Link to='/' className="locations__item-link">
+              <span>{city}</span>
+            </Link>
           </div>
         </section>
       </div>

@@ -9,15 +9,10 @@ import NotFoundPage from '../../pages/not-found-page/not-found-page';
 import PrivateRoute from '../private-route/private-route';
 import ScrollToTop from '../scroll-to-top/scroll-to-top';
 import Layout from '../layout/layout';
-import {ReviewTypes} from '../../types/review';
 import {useAppSelector} from '../../hooks/store';
 import LoadingScreen from '../loading-screen/loading-screen';
 
-type AppProps = {
-  reviews: ReviewTypes[];
-}
-
-export default function App({reviews}: AppProps): JSX.Element {
+export default function App(): JSX.Element {
   const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
   const isOffersDataLoading = useAppSelector((state) => state.isOffersDataLoading);
 
@@ -63,9 +58,7 @@ export default function App({reviews}: AppProps): JSX.Element {
             <Route
               path={AppRoute.Offer}
               element={
-                <OfferPage
-                  reviews={reviews}
-                />
+                <OfferPage />
               }
             />
             <Route
