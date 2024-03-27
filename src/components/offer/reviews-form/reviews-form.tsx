@@ -21,12 +21,30 @@ export default function ReviewsForm(): JSX.Element {
     textReview: '',
   });
 
-  const handleFormChange = (evt: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleRatingChange = (evt: ChangeEvent<HTMLInputElement>) => {
+    const { value } = evt.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      rating: Number(value)
+    }));
+  };
+
+  const handleTextReviewChange = (evt: ChangeEvent<HTMLTextAreaElement>) => {
     const { name, value } = evt.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value
+    }));
   };
 
   const dispatch = useAppDispatch();
+
+  const resetForm = () => {
+    setFormData({
+      rating: 0,
+      textReview: '',
+    });
+  };
 
   const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
@@ -36,6 +54,7 @@ export default function ReviewsForm(): JSX.Element {
       rating: Number(formData.rating),
     };
     dispatch(sendReview({ reviewData, offerId }));
+    resetForm();
   };
 
   return (
@@ -54,10 +73,11 @@ export default function ReviewsForm(): JSX.Element {
             <input
               className="form__rating-input visually-hidden"
               name="rating"
-              defaultValue={value}
+              value={value}
               id={`${value}-stars`}
               type="radio"
-              onChange={handleFormChange}
+              checked={formData.rating === value}
+              onChange={handleRatingChange}
             />
             <label
               htmlFor={`${value}-stars`}
@@ -76,8 +96,8 @@ export default function ReviewsForm(): JSX.Element {
         id="review"
         name="textReview"
         placeholder="Tell how was your stay, what you like and what can be improved"
-        defaultValue={formData.textReview}
-        onChange={handleFormChange}
+        value={formData.textReview}
+        onChange={handleTextReviewChange}
       />
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
