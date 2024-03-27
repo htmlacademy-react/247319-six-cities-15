@@ -1,4 +1,8 @@
-import { useState, ChangeEvent, Fragment } from 'react';
+import { useState, ChangeEvent, Fragment, FormEvent } from 'react';
+import { useAppDispatch } from '../../../hooks/store';
+import { sendReview } from '../../../store/api-actions';
+import { useParams } from 'react-router-dom';
+import { CommentTypes } from '../../../types/review';
 
 const rating = [
   { value: 5, label: 'perfect' },
@@ -9,18 +13,57 @@ const rating = [
 ];
 
 export default function ReviewsForm(): JSX.Element {
+  const params = useParams();
+  const offerId = params.id || '';
+
   const [formData, setFormData] = useState({
     rating: 0,
     textReview: '',
   });
 
-  const handleFormChange = (evt: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleRatingChange = (evt: ChangeEvent<HTMLInputElement>) => {
+    const { value } = evt.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      rating: Number(value)
+    }));
+  };
+
+  const handleTextReviewChange = (evt: ChangeEvent<HTMLTextAreaElement>) => {
     const { name, value } = evt.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value
+    }));
+  };
+
+  const dispatch = useAppDispatch();
+
+  const resetForm = () => {
+    setFormData({
+      rating: 0,
+      textReview: '',
+    });
+  };
+
+  const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
+    evt.preventDefault();
+
+    const reviewData: CommentTypes = {
+      comment: formData.textReview,
+      rating: Number(formData.rating),
+    };
+    dispatch(sendReview({ reviewData, offerId }));
+    resetForm();
   };
 
   return (
-    <form className="reviews__form form" action="#" method="post">
+    <form
+      className="reviews__form form"
+      action="#"
+      method="post"
+      onSubmit={handleSubmit}
+    >
       <label className="reviews__label form__label" htmlFor="review">
         Your review
       </label>
@@ -30,10 +73,11 @@ export default function ReviewsForm(): JSX.Element {
             <input
               className="form__rating-input visually-hidden"
               name="rating"
-              defaultValue={value}
+              value={value}
               id={`${value}-stars`}
               type="radio"
-              onChange={handleFormChange}
+              checked={formData.rating === value}
+              onChange={handleRatingChange}
             />
             <label
               htmlFor={`${value}-stars`}
@@ -52,8 +96,8 @@ export default function ReviewsForm(): JSX.Element {
         id="review"
         name="textReview"
         placeholder="Tell how was your stay, what you like and what can be improved"
-        defaultValue={formData.textReview}
-        onChange={handleFormChange}
+        value={formData.textReview}
+        onChange={handleTextReviewChange}
       />
       <div className="reviews__button-wrapper">
         <p className="reviews__help">

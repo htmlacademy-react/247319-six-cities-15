@@ -3,6 +3,7 @@ import {CityName} from '../const/city';
 import {AuthorizationStatus} from '../const/const';
 import {OfferTypes} from '../types/offer';
 import {ReviewTypes} from '../types/review';
+import {UserDataForState} from '../types/user-data';
 
 export const changeLocation = createAction<CityName>('location/setCityName');
 export const loadOffers = createAction<OfferTypes[]>('data/loadOffers');
@@ -13,3 +14,6 @@ export const setActiveOffer = createAction<OfferTypes>('data/setActiveOffer');
 export const loadNearPlaces = createAction<OfferTypes[]>('data/loadNearPlaces');
 export const loadReviews = createAction<ReviewTypes[]>('data/loadReviews');
 export const setOfferNotExist = createAction<boolean>('data/setOfferNotExist');
+export const addReview = createAction<ReviewTypes>('data/addReview');
+export const addUserData = createAction<UserDataForState>('user/addUserData');
+export const removeUserData = createAction('user/removeUserData');

@@ -17,7 +17,7 @@ export default function ReviewsList(): JSX.Element {
         {reviews.map((review) => (
           <Reviews
             key={review.id}
-            reviews={review}
+            review={review}
           />
         ))}
       </ul>

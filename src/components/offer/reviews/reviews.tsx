@@ -3,11 +3,11 @@ import {convertToPercentage} from '../../../const/const';
 import {humanizeDateTime, humanizeReviewTime} from '../../../const/const';
 
 type ReviewsProps = {
-  reviews: ReviewTypes;
+  review: ReviewTypes;
 }
 
-export default function Reviews({reviews}: ReviewsProps): JSX.Element {
-  const {date, user, comment, rating} = reviews;
+export default function Reviews({review}: ReviewsProps): JSX.Element {
+  const {date, user, comment, rating} = review;
   const {name, avatarUrl} = user;
 
   return (
