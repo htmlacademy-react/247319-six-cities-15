@@ -1,5 +1,5 @@
-import {useState, ChangeEvent, Fragment, FormEvent} from 'react';
-import {useAppDispatch} from '../../../hooks/store';
+import { useState, ChangeEvent, Fragment, FormEvent } from 'react';
+import { useAppDispatch } from '../../../hooks/store';
 import { sendReview } from '../../../store/api-actions';
 import { useParams } from 'react-router-dom';
 import { CommentTypes } from '../../../types/review';
@@ -35,13 +35,13 @@ export default function ReviewsForm(): JSX.Element {
       comment: formData.textReview,
       rating: Number(formData.rating),
     };
-    dispatch(sendReview({reviewData, offerId}));
+    dispatch(sendReview({ reviewData, offerId }));
   };
 
   return (
     <form
       className="reviews__form form"
-      action=""
+      action="#"
       method="post"
       onSubmit={handleSubmit}
     >

@@ -146,7 +146,7 @@ export const sendReview = createAsyncThunk<void, { reviewData: CommentTypes; off
 }>(
   'reviews/sendReview',
   async ({ reviewData, offerId }, { dispatch, extra: api }) => {
-    await api.post(`${APIRoute.Comments}/${offerId}`, reviewData);
-    dispatch(addReview(reviewData));
+    const {data} = await api.post<ReviewTypes>(`${APIRoute.Comments}/${offerId}`, reviewData);
+    dispatch(addReview(data));
   },
 );
