@@ -1,4 +1,8 @@
-import { useState, ChangeEvent, Fragment } from 'react';
+import {useState, ChangeEvent, Fragment, FormEvent} from 'react';
+import {useAppDispatch} from '../../../hooks/store';
+import { sendReview } from '../../../store/api-actions';
+import { useParams } from 'react-router-dom';
+import { CommentTypes } from '../../../types/review';
 
 const rating = [
   { value: 5, label: 'perfect' },
@@ -9,6 +13,9 @@ const rating = [
 ];
 
 export default function ReviewsForm(): JSX.Element {
+  const params = useParams();
+  const offerId = params.id || '';
+
   const [formData, setFormData] = useState({
     rating: 0,
     textReview: '',
@@ -19,8 +26,25 @@ export default function ReviewsForm(): JSX.Element {
     setFormData({ ...formData, [name]: value });
   };
 
+  const dispatch = useAppDispatch();
+
+  const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
+    evt.preventDefault();
+
+    const reviewData: CommentTypes = {
+      comment: formData.textReview,
+      rating: Number(formData.rating),
+    };
+    dispatch(sendReview({reviewData, offerId}));
+  };
+
   return (
-    <form className="reviews__form form" action="#" method="post">
+    <form
+      className="reviews__form form"
+      action=""
+      method="post"
+      onSubmit={handleSubmit}
+    >
       <label className="reviews__label form__label" htmlFor="review">
         Your review
       </label>

@@ -10,10 +10,14 @@ import {
   setError,
   setOffersDataLoadingStatus,
   setOfferNotExist,
+  addUserData,
+  removeUserData,
+  addReview,
 } from './action';
 import {CITIES, CityName} from '../const/city';
 import { AuthorizationStatus } from '../const/const';
 import { ReviewTypes } from '../types/review';
+import { UserDataForState } from '../types/user-data';
 
 type InitialStateType = {
   city: CityName;
@@ -25,6 +29,7 @@ type InitialStateType = {
   nearPlaces: OfferTypes[];
   reviews: ReviewTypes[];
   isOfferExist: boolean;
+  userData: UserDataForState | null;
 }
 
 const initialState: InitialStateType = {
@@ -37,6 +42,7 @@ const initialState: InitialStateType = {
   nearPlaces: [],
   reviews: [],
   isOfferExist: false,
+  userData: null,
 };
 
 const reducer = createReducer(initialState, (builder) => {
@@ -67,6 +73,15 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(setOfferNotExist, (state, action) => {
       state.isOfferExist = action.payload;
+    })
+    .addCase(addReview, (state, action) => {
+      state.reviews.push(action.payload);
+    })
+    .addCase(addUserData, (state, action) => {
+      state.userData = action.payload;
+    })
+    .addCase(removeUserData, (state) => {
+      state.userData = null;
     });
 });
 
